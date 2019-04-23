@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lshelpy_chatbot/message.dart';
+// Flutter library
+import 'package:flutter_dialogflow/dialogflow_v2.dart';
 
 class HomePage extends StatelessWidget{
   static const String TITLE = "LSHelpy";
