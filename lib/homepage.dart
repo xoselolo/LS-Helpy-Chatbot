@@ -103,6 +103,10 @@ class ChatScreenState extends State<ChatScreen> {
 
   Future waitChatbotResponse(String userMessage) async {
     // TODO: Controlar la entrada del usuario y dar respuesta en función a esta
+    print("LOLO");
+    print(HomePage.authGoogle.getProjectId);
+    print(HomePage.authGoogle.getSessionId);
+    print(HomePage.authGoogle.getToken);
     AIResponse response = await HomePage.dialogflow.detectIntent(userMessage);
     String chatbotResponseMessage = "No results";
     if(response.getMessage() != null){
