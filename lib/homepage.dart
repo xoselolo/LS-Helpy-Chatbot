@@ -5,15 +5,23 @@ import 'package:flutter_dialogflow/dialogflow_v2.dart';
 
 class HomePage extends StatelessWidget{
   static const String TITLE = "LSHelpy";
+  static AuthGoogle authGoogle;
+  static Dialogflow dialogflow;
 
   @override
   Widget build(BuildContext context) {
+    initGoogle();
     return new Scaffold(
         appBar: new AppBar(
           title: new Text(TITLE),
         ),
         body: new ChatScreen()
     );
+  }
+
+  Future initGoogle() async {
+    authGoogle = await AuthGoogle(fileJson: "assets/credentials.json").build();
+    dialogflow = Dialogflow(authGoogle: authGoogle,language: Language.spanishSpain);
   }
 }
 
@@ -93,12 +101,17 @@ class ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  void waitChatbotResponse(String userMessage) {
+  Future waitChatbotResponse(String userMessage) async {
     // TODO: Controlar la entrada del usuario y dar respuesta en función a esta
+    AIResponse response = await HomePage.dialogflow.detectIntent(userMessage);
+    String chatbotResponseMessage = "No results";
+    if(response.getMessage() != null){
+        chatbotResponseMessage = response.getMessage();
+    }
 
     _chatController.clear();
     Message message = new Message(
-        text: "soy un chatbot",
+        text: chatbotResponseMessage,
         student: false,
     );
 

@@ -9,7 +9,6 @@ class MyApp extends StatelessWidget {
   static const String TITLE = "LSHelpy";
   @override
   Widget build(BuildContext context) {
-    initGoogle();
     return MaterialApp(
       title: TITLE,
       theme: ThemeData(
@@ -17,10 +16,6 @@ class MyApp extends StatelessWidget {
       ),
       home: new HomePage(),
     );
-  }
-
-  Future initGoogle() async {
-    AuthGoogle authGoogle = await AuthGoogle(fileJson: "assets/credentials.json").build();
   }
 
 }
