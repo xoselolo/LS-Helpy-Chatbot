@@ -1,5 +1,8 @@
+import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:lshelpy_chatbot/message.dart';
+// Our dart classes
+import 'package:lshelpy_chatbot/classes/schedule.dart';
 // Flutter library
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
 
@@ -7,10 +10,14 @@ class HomePage extends StatelessWidget{
   static const String TITLE = "LSHelpy";
   static AuthGoogle authGoogle;
   static Dialogflow dialogflow;
+  static Map<String, Subject> dataBase;
+  static WeekSchedule studentSchedule;
+  //static List<Schedule> studentSchedule;
 
   @override
   Widget build(BuildContext context) {
     initGoogle();
+    initStructs();
     return new Scaffold(
         appBar: new AppBar(
           title: new Text(TITLE),
@@ -22,6 +29,34 @@ class HomePage extends StatelessWidget{
   Future initGoogle() async {
     authGoogle = await AuthGoogle(fileJson: "assets/credentials.json").build();
     dialogflow = Dialogflow(authGoogle: authGoogle,language: Language.spanishSpain);
+  }
+
+  void initStructs() {
+    HomePage.dataBase = new Map<String, Subject>();
+    initSubjects();
+
+    WeekSchedule studentSchedule = WeekSchedule();
+  }
+
+  void initSubjects() {
+    List<MapEntry<String, Subject>> subjects = new List<MapEntry<String, Subject>>();
+
+    // ----------
+    final String name = "Metodología y tecnología de la programación";
+    Map<String, Object> map = new Map();
+    map.putIfAbsent(Subject.CREDITOS, ()=>10);
+
+    //Iterable<MapEntry> entries = new Iterable.empty();
+    //MapEntry<String, Object> entry = new MapEntry(Subject.CREDITOS, 10);
+    //map.addEntries(entries);
+
+    Subject subject = new Subject(name);
+    subject.data = map;
+
+    HomePage.dataBase.putIfAbsent(name, ()=>subject);
+    // ----------
+
+    //HomePage.dataBase
   }
 }
 
@@ -103,13 +138,17 @@ class ChatScreenState extends State<ChatScreen> {
 
   Future waitChatbotResponse(String userMessage) async {
     // TODO: Controlar la entrada del usuario y dar respuesta en función a esta
-    print("LOLO");
-    print(HomePage.authGoogle.getProjectId);
-    print(HomePage.authGoogle.getSessionId);
-    print(HomePage.authGoogle.getToken);
+    //print("LOLO");
+    //print(HomePage.authGoogle.getProjectId);
+    //print(HomePage.authGoogle.getSessionId);
+    //print(HomePage.authGoogle.getToken);
+
     AIResponse response = await HomePage.dialogflow.detectIntent(userMessage);
     String chatbotResponseMessage = "No results";
     if(response.getMessage() != null){
+        // TODO: Comprovar mensaje incorrecto
+        // TODO: Comprovar tipo de mensaje
+        // TODO: Tratar cadaa tipo de mensaje
         chatbotResponseMessage = response.getMessage();
     }
 

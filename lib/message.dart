@@ -25,11 +25,6 @@ class Message extends ListTile{
 
     if(student){
       crossAxisAlignment = CrossAxisAlignment.start;
-      ImageIcon avatar = new ImageIcon(new Image.asset("graphics/student.png").image);
-      //Tab avatar = new Tab(
-      //    child: new Image.asset("graphics/student.png")
-      //);
-
       return new Container(
         margin: const EdgeInsets.symmetric(vertical: 10.0),
         child: new Row(
@@ -56,14 +51,6 @@ class Message extends ListTile{
       );
     }else{
       crossAxisAlignment = CrossAxisAlignment.end;
-      /*CircleAvatar avatar = new CircleAvatar(
-          child: new Image.network(_chatbot_avatar)
-      );*/
-      //Icon avatar = new Icon(Icons.book); // TODO: Change for another icon
-      Tab avatar = new Tab(
-          child: new Image.asset("graphics/bot.png")
-      );
-
       return new Container(
         alignment: Alignment.centerRight,
         margin: const EdgeInsets.symmetric(vertical: 10.0),
@@ -76,16 +63,17 @@ class Message extends ListTile{
                   new Text(_chatbot_name, style: Theme.of(context).textTheme.subhead),
                   new Container(
                     margin: const EdgeInsets.only(top: 5.0),
-                    child: new Text(text),
+                    child: new Text(
+                      text,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   )
                 ],
               ),
               new Container(
                 margin: const EdgeInsets.only(left: 16.0),
                 //child: new CircleAvatar(
-                child: new CircleAvatar(
-                    child: new Image.network(_chatbot_avatar)
-                )
+                child: new Icon(Icons.face)
               ),
             ],
       ),
