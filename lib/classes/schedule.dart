@@ -21,10 +21,7 @@ class DaySchedule {
   List<Subject> hores;
 
   DaySchedule(){
-    this.hores = new List<Subject>();
-    for (int i = 0; i < DaySchedule.MAX_HORES; i++){
-      hores.add(null);
-    }
+    this.hores = new List<Subject>(MAX_HORES);
   }
 
   // Funtions

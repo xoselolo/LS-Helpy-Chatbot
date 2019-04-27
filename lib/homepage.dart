@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget{
     // ----------
     final String name = "Metodología y tecnología de la programación";
     Map<String, Object> map = new Map();
-    map.putIfAbsent(Subject.CREDITOS, ()=>10);
+    map[Subject.CREDITOS] = 10;
 
     //Iterable<MapEntry> entries = new Iterable.empty();
     //MapEntry<String, Object> entry = new MapEntry(Subject.CREDITOS, 10);
@@ -53,7 +53,7 @@ class HomePage extends StatelessWidget{
     Subject subject = new Subject(name);
     subject.data = map;
 
-    HomePage.dataBase.putIfAbsent(name, ()=>subject);
+    HomePage.dataBase[name] = subject;
     // ----------
 
     //HomePage.dataBase
@@ -70,17 +70,22 @@ class ChatScreenState extends State<ChatScreen> {
   final List<Message> _messages = <Message>[];
 
   void _handleSubmit(String text) {
-    _chatController.clear();
-    Message message = new Message(
-        text: text,
-        student: true
-    );
+    if(text!=null){
+      if(text.length != 0){
+        _chatController.clear();
+        Message message = new Message(
+            text: text,
+            student: true
+        );
 
-    setState(() {
-      _messages.insert(0, message);
-    });
+        setState(() {
+          _messages.insert(0, message);
+        });
 
-    waitChatbotResponse(message.text);
+        waitChatbotResponse(message.text);
+      }
+    }
+
   }
 
   Widget _chatEnvironment (){
@@ -136,7 +141,7 @@ class ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  Future waitChatbotResponse(String userMessage) async {
+  Future<void> waitChatbotResponse(String userMessage) async {
     // TODO: Controlar la entrada del usuario y dar respuesta en función a esta
     //print("LOLO");
     //print(HomePage.authGoogle.getProjectId);
