@@ -1,7 +1,5 @@
-
-
+import 'constValues.dart';
 class Subject{
-  static const String CREDITOS = "creditos";
 
   // Attributes
   String name;

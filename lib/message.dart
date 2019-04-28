@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lshelpy_chatbot/classes/schedule.dart';
 import 'message.dart';
 
 const String _student_name = "Student";
@@ -34,7 +35,40 @@ class Message extends StatelessWidget {
         title: Text(_chatbot_name, textAlign: TextAlign.end,),
         subtitle: Text(text, textAlign: TextAlign.end,),
       );
-
     }
+  }
+
+  Widget buildSchedule(WeekSchedule studentSchedule){
+    List<Container> subjects = new List(DaySchedule.MAX_HORES * 5);
+    int k;
+    for(int i = 0; i < 5; i++){
+      for(int j = 0; j < DaySchedule.MAX_HORES; j++, k++){
+        if(studentSchedule.dies[i].isFree(j)){
+          // Creem el text buit
+          subjects.add(new Container(
+              color: Colors.grey,
+              child: new Text("---"),
+          ));
+        }else{
+          subjects.add(new Container(
+              color: Colors.teal[200],
+              child: new Text(studentSchedule.dies[i].elementAt(j).name),
+          ));
+        }
+      }
+    }
+
+    return ListTile(
+      trailing: CircleAvatar(child: new Icon(Icons.face)),
+      title: Text(_chatbot_name, textAlign: TextAlign.end,),
+      subtitle: GridView.count(
+          crossAxisCount: 5,
+          children: List<Widget>.generate(DaySchedule.MAX_HORES * 5, (index){
+              return new GridTile(
+                  child: subjects[index]
+              );
+          }),
+      ),
+    );
   }
 }
