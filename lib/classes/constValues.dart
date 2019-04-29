@@ -52,8 +52,8 @@ class ConstValues{
       static const String PAED = "PAED";
       static const String MATES = "MATES";
       static const String DPOO = "DPOO";
-
-//        Asignaturas de tercero
+  //        Asignaturas de tercero
+      static const String PIC3 = "PIC3";
   //        Asignaturas de cuarto
   // ----------
 

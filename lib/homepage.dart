@@ -99,6 +99,7 @@ class HomePage extends StatelessWidget{
     subject.data = map;
 
     HomePage.dataBase[name] = subject;
+    // ----------
     // ---------- 2.DPOO
     name = ConstValues.DPOO;
     map = new Map();
@@ -114,6 +115,32 @@ class HomePage extends StatelessWidget{
     horario[ConstValues.DAY_M] = horesDeClasseDimarts;
     horesDeClasseDimecres = new List<int>(); // Dimecres
     horesDeClasseDimecres.add(1);
+    horario[ConstValues.DAY_X] = horesDeClasseDimecres;
+    horesDeClasseDijous = new List<int>(); // Dijous
+    horario[ConstValues.DAY_J] = horesDeClasseDijous;
+    horesDeClasseDivendres = new List<int>(); // Divendres
+    horario[ConstValues.DAY_V] = horesDeClasseDivendres;
+    map[ConstValues.HORARIO] = horario;
+
+    subject = new Subject(name);
+    subject.data = map;
+
+    HomePage.dataBase[name] = subject;
+    // ----------
+    // ---------- 3.PIC3
+    name = ConstValues.PIC3;
+    map = new Map();
+    map[ConstValues.SEMESTRE] = "Anual";
+    map[ConstValues.CURS] = 3;
+    map[ConstValues.CREDITOS] = 3;
+
+    horario = new Map<String, List<int>>(); // horario
+    horesDeClasseDilluns = new List<int>();// Dilluns
+    horario[ConstValues.DAY_L] = horesDeClasseDilluns;
+    horesDeClasseDimarts = new List<int>(); // Dimarts
+    horario[ConstValues.DAY_M] = horesDeClasseDimarts;
+    horesDeClasseDimecres = new List<int>(); // Dimecres
+    horesDeClasseDimecres.add(3);
     horario[ConstValues.DAY_X] = horesDeClasseDimecres;
     horesDeClasseDijous = new List<int>(); // Dijous
     horario[ConstValues.DAY_J] = horesDeClasseDijous;
@@ -263,7 +290,7 @@ class ChatScreenState extends State<ChatScreen> {
           }else if (fase == ConstValues.fase3){// --------- FASE 3
             // fase3 CURS $number fase3 Así que $number... Escribe las asignaturas pendientes de años anteriores que quieras añadir a tu horario.
             String CURStag = botMessage.substring(6, 10);
-            print("CURS TAGE: " + CURStag);
+            print("CURS TAG: " + CURStag);
 
             String course = getWord(botMessage, 11);
             print("Student course: " + course);
@@ -386,7 +413,6 @@ class ChatScreenState extends State<ChatScreen> {
                   }
 
                   // Asignatura añadida al horario
-
                   sendMessage(subject.name + " añadida al horario!");
 
                 }
@@ -395,9 +421,151 @@ class ChatScreenState extends State<ChatScreen> {
 
               //WeekSchedule schedule = HomePage.studentSchedule;
               //print("Horario");
+              // TODO:
+              //    maybeNot -> Enviar mensaje de fase4 SHOW
+              //    -> mostrar el horario
+              //    Enviar mensaje de fase4 MORE
+              //    En la respuesta con action = MORE mostrar el mensaje ( para que no siempre sea el mismo )
+
+              // TODO: Falta por añadir la action tambien de FINISH
 
             }else if(action == ConstValues.ADDONE){ // Afegim una asignatura
               // PAS 1.2
+              WeekSchedule schedule = HomePage.studentSchedule;
+              index++;
+              String assignatura = getWord(botMessage, index);
+              Subject subject = HomePage.dataBase[assignatura];
+              Map<String, List<int>> horario = subject.data[ConstValues.HORARIO];
+
+              int numInsercions = 0;
+
+              List<int> horesDia = horario[ConstValues.DAY_L]; // Hores de dilluns
+              int size = 0;
+              if(horesDia != null){
+                if(horesDia.isNotEmpty){
+                  size = horesDia.length;
+                  for(int i = 0; i < size; i++){
+                    int dia = 0;
+                    int hora = horesDia.elementAt(i);
+                    if(isOcuped(dia, hora)){
+                      Subject previousSubject = HomePage.studentSchedule.dies.elementAt(dia).hores.elementAt(hora);
+                      if(previousSubject.name != subject.name){
+                        bool wants = await studentWantToOverride(previousSubject, subject, this.context, 2, 5);
+                        if(wants){
+                          HomePage.studentSchedule.addSubject(subject, dia, hora);
+                          numInsercions++;
+                        }
+                      }
+                    }else{
+                      HomePage.studentSchedule.addSubject(subject, dia, hora);
+                      numInsercions++;
+                    }
+                  }
+                }
+              }
+
+              horesDia = horario[ConstValues.DAY_M]; // Hores de dimarts
+              if(horesDia != null){
+                if(horesDia.isNotEmpty){
+                  size = horesDia.length;
+                  for(int i = 0; i < size; i++){
+                    int dia = 1;
+                    int hora = horesDia.elementAt(i);
+                    if(isOcuped(dia, hora)){
+                      Subject previousSubject = HomePage.studentSchedule.dies.elementAt(dia).hores.elementAt(hora);
+                      if(previousSubject.name != subject.name){
+                        bool wants = await studentWantToOverride(previousSubject, subject, this.context, 2, 5);
+                        if(wants){
+                          HomePage.studentSchedule.addSubject(subject, dia, hora);
+                          numInsercions++;
+                        }
+                      }
+                    }else{
+                      HomePage.studentSchedule.addSubject(subject, dia, hora);
+                      numInsercions++;
+                    }
+                  }
+                }
+              }
+
+              horesDia = horario[ConstValues.DAY_X]; // Hores de dimecres
+              if(horesDia != null){
+                if(horesDia.isNotEmpty){
+                  size = horesDia.length;
+                  for(int i = 0; i < size; i++){
+                    int dia = 2;
+                    int hora = horesDia.elementAt(i);
+                    if(isOcuped(dia, hora)){
+                      Subject previousSubject = HomePage.studentSchedule.dies.elementAt(dia).hores.elementAt(hora);
+                      if(previousSubject.name != subject.name){
+                        bool wants = await studentWantToOverride(previousSubject, subject, this.context, 2, 5);
+                        if(wants){
+                          HomePage.studentSchedule.addSubject(subject, dia, hora);
+                          numInsercions++;
+                        }
+                      }
+                    }else{
+                      HomePage.studentSchedule.addSubject(subject, dia, hora);
+                      numInsercions++;
+                    }
+                  }
+                }
+              }
+
+              horesDia = horario[ConstValues.DAY_J]; // Hores de dijous
+              if(horesDia != null){
+                if(horesDia.isNotEmpty){
+                  size = horesDia.length;
+                  for(int i = 0; i < size; i++){
+                    int dia = 3;
+                    int hora = horesDia.elementAt(i);
+                    if(isOcuped(dia, hora)){
+                      Subject previousSubject = HomePage.studentSchedule.dies.elementAt(dia).hores.elementAt(hora);
+                      if(previousSubject.name != subject.name){
+                        bool wants = await studentWantToOverride(previousSubject, subject, this.context, 2, 5);
+                        if(wants){
+                          HomePage.studentSchedule.addSubject(subject, dia, hora);
+                          numInsercions++;
+                        }
+                      }
+                    }else{
+                      HomePage.studentSchedule.addSubject(subject, dia, hora);
+                      numInsercions++;
+                    }
+                  }
+                }
+              }
+
+              horesDia = horario[ConstValues.DAY_V]; // Hores de divendres
+              if(horesDia != null){
+                if(horesDia.isNotEmpty){
+                  size = horesDia.length;
+                  for(int i = 0; i < size; i++){
+                    int dia = 4;
+                    int hora = horesDia.elementAt(i);
+                    if(isOcuped(dia, hora)){
+                      Subject previousSubject = HomePage.studentSchedule.dies.elementAt(dia).hores.elementAt(hora);
+                      if(previousSubject.name != subject.name){
+                        bool wants = await studentWantToOverride(previousSubject, subject, this.context, 2, 5);
+                        if(wants){
+                          HomePage.studentSchedule.addSubject(subject, dia, hora);
+                          numInsercions++;
+                        }
+                      }
+                    }else{
+                      HomePage.studentSchedule.addSubject(subject, dia, hora);
+                      numInsercions++;
+                    }
+                  }
+                }
+              }
+              if(numInsercions > 0){
+                // Asignatura añadida al horario
+                sendMessage(subject.name + " añadida al horario!");
+              }else{
+                // No se ha añadido ni una vez
+                sendMessage(subject.name + " no ha estado añadida al horario");
+              }
 
             }else if(action == ConstValues.INFORMATION) { // Demanem info d'una asignatura
               // PAS 1.3
@@ -447,10 +615,65 @@ class ChatScreenState extends State<ChatScreen> {
   }
 }
 
+enum ConfirmAction { CANCELAR, ACEPTAR }
+
+Future<bool> studentWantToOverride(Subject previousSubject, Subject subject, BuildContext context,
+    int dia, int hora) async{
+  String message = "Aceptando se pondrá " + subject.name + " el día "
+      + dia.toString() + " en vez de " + previousSubject.name + " en la "
+      + hora.toString() + " hora";
+  bool want = false;
+
+  switch(
+    await showDialog<ConfirmAction>(
+      context: context,
+      barrierDismissible: false, // user must tap button for close dialog!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Quieres sobreescribir la asignatura?'),
+          content: Text(message),
+          actions: <Widget>[
+            FlatButton(
+              child: const Text('CANCELAR'),
+              onPressed: () {
+                Navigator.of(context).pop(ConfirmAction.CANCELAR);
+                return false;
+              },
+            ),
+            FlatButton(
+              child: const Text('ACEPTAR'),
+              onPressed: () {
+                Navigator.of(context).pop(ConfirmAction.ACEPTAR);
+                return true;
+              },
+            )
+          ],
+        );
+      },
+    )
+  ){
+    case ConfirmAction.ACEPTAR:
+      want = true;
+      break;
+    case ConfirmAction.CANCELAR:
+      want = false;
+      break;
+    default:
+      want = false;
+      break;
+  }
+
+  return want;
+}
+
+bool isOcuped(int dia, int hora) {
+  return HomePage.studentSchedule.dies.elementAt(dia).hores.elementAt(hora) != null;
+}
+
 String getWord(String botMessage, int initialIndex) {
   String word = "";
   int index = initialIndex;
-  while (botMessage[index] != " " && index < botMessage.length){
+  while (index < botMessage.length && botMessage[index] != " " && botMessage[index] != ","){
     word = word + botMessage[index];
     index++;
   }
