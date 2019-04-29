@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget{
     HomePage.dataBase = new Map<String, Subject>();
     initSubjects();
 
-    WeekSchedule studentSchedule = WeekSchedule();
+    studentSchedule = WeekSchedule();
   }
 
   void initSubjects() {
@@ -62,10 +62,10 @@ class HomePage extends StatelessWidget{
     horario[ConstValues.DAY_X] = horesDeClasseDimecres;
     List<int> horesDeClasseDijous = new List<int>(); // Dijous
     horesDeClasseDijous.add(4);
-    horario[ConstValues.DAY_X] = horesDeClasseDijous;
+    horario[ConstValues.DAY_J] = horesDeClasseDijous;
     List<int> horesDeClasseDivendres = new List<int>(); // Divendres
     horesDeClasseDivendres.add(4);
-    horario[ConstValues.DAY_X] = horesDeClasseDivendres;
+    horario[ConstValues.DAY_V] = horesDeClasseDivendres;
     map[ConstValues.HORARIO] = horario;
 
     Subject subject = new Subject(name);
@@ -79,6 +79,22 @@ class HomePage extends StatelessWidget{
     map[ConstValues.CURS] = 2;
     map[ConstValues.CREDITOS] = 8;
 
+    horario = new Map<String, List<int>>(); // horario
+    horesDeClasseDilluns = new List<int>();// Dilluns
+    horesDeClasseDilluns.add(3);
+    horario[ConstValues.DAY_L] = horesDeClasseDilluns;
+    horesDeClasseDimarts = new List<int>(); // Dimarts
+    horario[ConstValues.DAY_M] = horesDeClasseDimarts;
+    horesDeClasseDimecres = new List<int>(); // Dimecres
+    horesDeClasseDimecres.add(3);
+    horario[ConstValues.DAY_X] = horesDeClasseDimecres;
+    horesDeClasseDijous = new List<int>(); // Dijous
+    horesDeClasseDijous.add(2);
+    horario[ConstValues.DAY_J] = horesDeClasseDijous;
+    horesDeClasseDivendres = new List<int>(); // Divendres
+    horario[ConstValues.DAY_V] = horesDeClasseDivendres;
+    map[ConstValues.HORARIO] = horario;
+
     subject = new Subject(name);
     subject.data = map;
 
@@ -89,6 +105,21 @@ class HomePage extends StatelessWidget{
     map[ConstValues.SEMESTRE] = "Anual";
     map[ConstValues.CURS] = 2;
     map[ConstValues.CREDITOS] = 8;
+
+    horario = new Map<String, List<int>>(); // horario
+    horesDeClasseDilluns = new List<int>();// Dilluns
+    horesDeClasseDilluns.add(1);
+    horario[ConstValues.DAY_L] = horesDeClasseDilluns;
+    horesDeClasseDimarts = new List<int>(); // Dimarts
+    horario[ConstValues.DAY_M] = horesDeClasseDimarts;
+    horesDeClasseDimecres = new List<int>(); // Dimecres
+    horesDeClasseDimecres.add(1);
+    horario[ConstValues.DAY_X] = horesDeClasseDimecres;
+    horesDeClasseDijous = new List<int>(); // Dijous
+    horario[ConstValues.DAY_J] = horesDeClasseDijous;
+    horesDeClasseDivendres = new List<int>(); // Divendres
+    horario[ConstValues.DAY_V] = horesDeClasseDivendres;
+    map[ConstValues.HORARIO] = horario;
 
     subject = new Subject(name);
     subject.data = map;
@@ -298,13 +329,72 @@ class ChatScreenState extends State<ChatScreen> {
                   print("Créditos de " + subject.name + ": " + (subject.data[ConstValues.CREDITOS]).toString());
 
                   // Añadir asignatura al horario
-                  // TODO
-                  // (momentaneo)
+                  Map<String, List<int>> horario = subject.data[ConstValues.HORARIO];
+                  List<int> horesDia = horario[ConstValues.DAY_L]; // Hores de dilluns
+                  int size;
+                  if(horesDia != null){
+                    if(horesDia.isNotEmpty){
+                      size = horesDia.length;
+                      for(int i = 0; i < size; i++){
+                        HomePage.studentSchedule.addSubject(subject, 0, horesDia.elementAt(i));
+                      }
+                    }
+                  }
+
+
+                  horesDia = horario[ConstValues.DAY_M]; // Hores de dimarts
+                  if(horesDia != null){
+                    if(horesDia.isNotEmpty){
+                      size = horesDia.length;
+                      for(int i = 0; i < size; i++){
+                        HomePage.studentSchedule.addSubject(subject, 1, horesDia.elementAt(i));
+                      }
+                    }
+                  }
+
+
+                  horesDia = horario[ConstValues.DAY_X]; // Hores de dimecres
+                  if(horesDia != null){
+                    if(horesDia.isNotEmpty){
+                      size = horesDia.length;
+                      for(int i = 0; i < size; i++){
+                        HomePage.studentSchedule.addSubject(subject, 2, horesDia.elementAt(i));
+                      }
+                    }
+                  }
+
+
+                  horesDia = horario[ConstValues.DAY_J]; // Hores de dijous
+                  if(horesDia != null){
+                    if(horesDia.isNotEmpty){
+                      size = horesDia.length;
+                      for(int i = 0; i < size; i++){
+                        HomePage.studentSchedule.addSubject(subject, 3, horesDia.elementAt(i));
+                      }
+                    }
+                  }
+
+
+                  horesDia = horario[ConstValues.DAY_V]; // Hores de dimarts
+                  if(horesDia != null){
+                    if(horesDia.isNotEmpty){
+                      size = horesDia.length;
+                      for(int i = 0; i < size; i++){
+                        HomePage.studentSchedule.addSubject(subject, 4, horesDia.elementAt(i));
+                      }
+                    }
+                  }
+
+                  // Asignatura añadida al horario
+
                   sendMessage(subject.name + " añadida al horario!");
 
                 }
                 index += asignatura.length;
               }
+
+              //WeekSchedule schedule = HomePage.studentSchedule;
+              //print("Horario");
 
             }else if(action == ConstValues.ADDONE){ // Afegim una asignatura
               // PAS 1.2

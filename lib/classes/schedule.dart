@@ -30,8 +30,9 @@ class DaySchedule {
     return hores.elementAt(index);
   }
   void addSubject(Subject subject, int hora){
-    hores.removeAt(hora);
-    hores.insert(hora, subject);
+    //hores.removeAt(hora);
+    hores[hora] = subject;
+    //hores.insert(hora, subject);
   }
 }
 
