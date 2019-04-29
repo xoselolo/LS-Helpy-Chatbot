@@ -27,3 +27,10 @@ Our chatbot name is LSHelpy, and it's useful to students of LaSalle to build the
 ## Objective
 
 The final step of our chatbot may be the construction of a schedule and a download of it in the student cell.
+
+
+### Why had we choose Flutter Language for this.
+
+We didn't know how this Language works (we just know to program a little bit only for Android) and it has been a great oportunity to get introduced to this new and good perspective framework.
+
+We used Google's tool "Dialog Flow" to have an ordered conversation phase to phase.
