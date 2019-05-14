@@ -587,13 +587,7 @@ class ChatScreenState extends State<ChatScreen> {
 
               String atributo = getWord(botMessage, index);
               print("Atributo pedido: " + atributo);
-
-              /*
-              static const String SEMESTRE = "SEMESTRE";
-      static const String CURS = "CURS";
-      static const String CREDITOS = "CREDITOS";
-      static const String HORARIO = "HORARIO";
-               */
+              
               switch (atributo){
                 case ConstValues.SEMESTRE:
                   muestraTemporalidadAsignatura(assignatura);
@@ -610,10 +604,9 @@ class ChatScreenState extends State<ChatScreen> {
               }
 
               print("Resposta del bot: " + botMessage);
-
-
-              sendMessage("QUIERES INFO");
-              //mostrarMensajeQueMas();
+              
+              //sendMessage("QUIERES INFO");
+              mostrarMensajeQueMas();
 
             }else{ // Demanem acabar (descarregar horari i tancar conversacio )
               // PAS 1.4
@@ -655,19 +648,104 @@ class ChatScreenState extends State<ChatScreen> {
 
   void muestraTemporalidadAsignatura(String assignatura) {
       String temporalidad = HomePage.dataBase[assignatura].data[ConstValues.SEMESTRE];
-      sendMessage(temporalidad);
+      sendMessage("La asignatura " + assignatura + " es una asigatura " + temporalidad + ".");
   }
 
   void muestraCursoAsignatura(String assignatura) {
-
+    String curso = HomePage.dataBase[assignatura].data[ConstValues.CURS];
+    sendMessage(assignatura + " se cursa en " + curso + "º.");
   }
 
   void muestraCreditosAsignatura(String assignatura) {
-
+    int creditos = HomePage.dataBase[assignatura].data[ConstValues.CREDITOS];
+    sendMessage("La asignatura de " + assignatura + " tiene un total de " + creditos.toString() + " creditos.");
   }
 
   void muestraHorarioAsignatura(String assignatura) {
 
+    String horarioTotal = "";
+    Map<String, List<int>> horario = HomePage.dataBase[assignatura].data[ConstValues.HORARIO];
+    for(int i = 0; i < 5; i++){
+      String horarioDiaI = muestraHorarioDia(assignatura, horario, i);
+      horarioTotal = horarioTotal + horarioDiaI;
+      if(i != 4){
+        horarioTotal = horarioTotal + "\n";
+      }
+    }
+    
+    sendMessage("Horario de la asignatura: " + assignatura + "\n"
+        + horarioTotal);
+  }
+
+  String muestraHorarioDia(String assignatura, Map<String, List<int>> horario, int i) {
+    String horarioDia = "";
+    List<int> horasDia;
+    switch(i){
+      case 0:
+        horarioDia = ConstValues.DAY_L + ":\n";
+        horasDia = horario[ConstValues.DAY_L];
+        break;
+      case 1:
+        horarioDia = ConstValues.DAY_M + ":\n";
+        horasDia = horario[ConstValues.DAY_M];
+        break;
+      case 2:
+        horarioDia = ConstValues.DAY_X + ":\n";
+        horasDia = horario[ConstValues.DAY_X];
+        break;
+      case 3:
+        horarioDia = ConstValues.DAY_J + ":\n";
+        horasDia = horario[ConstValues.DAY_J];
+        break;
+      default:
+        horarioDia = ConstValues.DAY_V + ":\n";
+        horasDia = horario[ConstValues.DAY_V];
+        break;
+    }
+
+    if(horasDia.isEmpty){
+      horarioDia = horarioDia + " - sin clases - \n";
+    }else{
+      for(int i = 0; i < horasDia.length; i++){
+        int hora = horasDia.elementAt(i);
+        String horaString = transformaHoraIndexAString(hora);
+        horarioDia = horarioDia + horaString + "\n";
+      }
+    }
+
+    return horarioDia;
+  }
+
+  String transformaHoraIndexAString(int hora) {
+    switch(hora){
+      case 0:
+        return "8.00h a 9.20h";
+        break;
+      case 1:
+        return "9.40h a 11.00h";
+        break;
+      case 2:
+        return "11.10h a 12.30h";
+        break;
+      case 3:
+        return "12.40h a 14.00h";
+        break;
+      case 4:
+        return "14.05h a 15.25h";
+        break;
+      case 5:
+        return "15.30h a 16.50h";
+        break;
+      case 6:
+        return "17.00h a 18.20h";
+        break;
+      case 7:
+        return "18.30h a 19.50h";
+        break;
+      case 8:
+        return "20.00h a 21.20h";
+        break;
+    }
   }
 }
 
