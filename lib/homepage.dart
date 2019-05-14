@@ -45,88 +45,25 @@ class HomePage extends StatelessWidget{
   }
 
   void initSubjects() {
+    //asignaturas de 1o
+    createSubject("PROG 1", "Anual", 1, 10, [1, -1, 1, -1, 1]);
+    createSubject("IO", "Anual", 1, 9, [3, -1, 0, 0, 0]);
+    createSubject("Business", "Anual", 1, 4, [0, -1, 4, -1, -1]);
+    createSubject("ALGEBRA", "Anual", 1, 8, [-1, -1, 2, -1, 2]);
+    createSubject("PiC 1", "Anual", 1, 2, [-1, -1, -1, 3, -1]);
+    createSubject("CALCULO", "Anual", 1, 10, [2, 3, -1, 2, -1]);
+    createSubject("DiU 1", "Anual", 1, 5, [-1, 1, -1, -1, -1]);
+    createSubject("ELECTRO 1", "Anual", 1, 12, [-1, -1, -1, 3, -1]);
+
     // ---------- 2.PAED
-    String name = ConstValues.PAED;
-    Map<String, Object> map = new Map();
-    map[ConstValues.SEMESTRE] = "Anual"; // Tipus d'assignatura
-    map[ConstValues.CURS] = 2; // Curs
-    map[ConstValues.CREDITOS] = 8; // Num de credits
+    createSubject("PAED", "Anual", 2, 8, [-1, -1, 4, 4, 4]);
 
-    Map<String, List<int>> horario = new Map<String, List<int>>(); // horario
-    List<int> horesDeClasseDilluns = new List<int>();// Dilluns
-    horario[ConstValues.DAY_L] = horesDeClasseDilluns;
-    List<int> horesDeClasseDimarts = new List<int>(); // Dimarts
-    horario[ConstValues.DAY_M] = horesDeClasseDimarts;
-    List<int> horesDeClasseDimecres = new List<int>(); // DImecres
-    horesDeClasseDimecres.add(4);
-    horario[ConstValues.DAY_X] = horesDeClasseDimecres;
-    List<int> horesDeClasseDijous = new List<int>(); // Dijous
-    horesDeClasseDijous.add(4);
-    horario[ConstValues.DAY_J] = horesDeClasseDijous;
-    List<int> horesDeClasseDivendres = new List<int>(); // Divendres
-    horesDeClasseDivendres.add(4);
-    horario[ConstValues.DAY_V] = horesDeClasseDivendres;
-    map[ConstValues.HORARIO] = horario;
-
-    Subject subject = new Subject(name);
-    subject.data = map;
-
-    HomePage.dataBase[name] = subject;
     // ---------- 2.MATES
-    name = ConstValues.MATES;
-    map = new Map();
-    map[ConstValues.SEMESTRE] = "Anual";
-    map[ConstValues.CURS] = 2;
-    map[ConstValues.CREDITOS] = 8;
+    createSubject("MATES", "Anual", 2, 8, [3, 0, 3, 2, 0]);
 
-    horario = new Map<String, List<int>>(); // horario
-    horesDeClasseDilluns = new List<int>();// Dilluns
-    horesDeClasseDilluns.add(3);
-    horario[ConstValues.DAY_L] = horesDeClasseDilluns;
-    horesDeClasseDimarts = new List<int>(); // Dimarts
-    horario[ConstValues.DAY_M] = horesDeClasseDimarts;
-    horesDeClasseDimecres = new List<int>(); // Dimecres
-    horesDeClasseDimecres.add(3);
-    horario[ConstValues.DAY_X] = horesDeClasseDimecres;
-    horesDeClasseDijous = new List<int>(); // Dijous
-    horesDeClasseDijous.add(2);
-    horario[ConstValues.DAY_J] = horesDeClasseDijous;
-    horesDeClasseDivendres = new List<int>(); // Divendres
-    horario[ConstValues.DAY_V] = horesDeClasseDivendres;
-    map[ConstValues.HORARIO] = horario;
-
-    subject = new Subject(name);
-    subject.data = map;
-
-    HomePage.dataBase[name] = subject;
-    // ----------
     // ---------- 2.DPOO
-    name = ConstValues.DPOO;
-    map = new Map();
-    map[ConstValues.SEMESTRE] = "Anual";
-    map[ConstValues.CURS] = 2;
-    map[ConstValues.CREDITOS] = 8;
+    createSubject("DPOO", "Anual", 2, 8, [1, 0, 1, 0, 0]);
 
-    horario = new Map<String, List<int>>(); // horario
-    horesDeClasseDilluns = new List<int>();// Dilluns
-    horesDeClasseDilluns.add(1);
-    horario[ConstValues.DAY_L] = horesDeClasseDilluns;
-    horesDeClasseDimarts = new List<int>(); // Dimarts
-    horario[ConstValues.DAY_M] = horesDeClasseDimarts;
-    horesDeClasseDimecres = new List<int>(); // Dimecres
-    horesDeClasseDimecres.add(1);
-    horario[ConstValues.DAY_X] = horesDeClasseDimecres;
-    horesDeClasseDijous = new List<int>(); // Dijous
-    horario[ConstValues.DAY_J] = horesDeClasseDijous;
-    horesDeClasseDivendres = new List<int>(); // Divendres
-    horario[ConstValues.DAY_V] = horesDeClasseDivendres;
-    map[ConstValues.HORARIO] = horario;
-
-    subject = new Subject(name);
-    subject.data = map;
-
-    HomePage.dataBase[name] = subject;
-    // ----------
     // ---------- 3.PIC3
     name = ConstValues.PIC3;
     map = new Map();
@@ -154,6 +91,67 @@ class HomePage extends StatelessWidget{
     HomePage.dataBase[name] = subject;
     // ----------
 
+  }
+
+  void createSubject(String nombre, String duracion, int curso, int creditos, List<int> list) {
+    String name = nombre;
+    Map<String, Object> map = new Map();
+    map[ConstValues.SEMESTRE] = duracion; // Tipus d'assignatura
+    map[ConstValues.CURS] = curso; // Curs
+    map[ConstValues.CREDITOS] = creditos; // Num de credits
+
+    Map<String, List<int>> horario = new Map<String, List<int>>(); // horario
+    if (list[0] == -1){
+      List<int> horesDeClasseDilluns = new List<int>();// Dilluns
+      horario[ConstValues.DAY_L] = horesDeClasseDilluns;
+    }else{
+      List<int> horesDeClasseDilluns = new List<int>();// Dilluns
+      horesDeClasseDilluns.add(list[0]);
+      horario[ConstValues.DAY_L] = horesDeClasseDilluns;
+    }
+
+    if (list[1] == -1){
+      List<int> horesDeClasseDimarts = new List<int>();// Dimarts
+      horario[ConstValues.DAY_M] = horesDeClasseDimarts;
+    }else{
+      List<int> horesDeClasseDimarts = new List<int>();// Dimarts
+      horesDeClasseDimarts.add(list[1]);
+      horario[ConstValues.DAY_M] = horesDeClasseDimarts;
+    }
+
+    if (list[2] == -1){
+      List<int> horesDeClasseDimecres = new List<int>();// Dimecres
+      horario[ConstValues.DAY_X] = horesDeClasseDimecres;
+    }else{
+      List<int> horesDeClasseDimecres = new List<int>(); // DImecres
+      horesDeClasseDimecres.add(list[2]);
+      horario[ConstValues.DAY_X] = horesDeClasseDimecres;
+    }
+
+    if (list[3] == -1){
+      List<int> horesDeClasseDijous = new List<int>();// Dijous
+      horario[ConstValues.DAY_J] = horesDeClasseDijous;
+    }else{
+      List<int> horesDeClasseDijous = new List<int>(); // Dijous
+      horesDeClasseDijous.add(list[3]);
+      horario[ConstValues.DAY_J] = horesDeClasseDijous;
+    }
+
+    if (list[4] == -1){
+      List<int> horesDeClasseDijous = new List<int>();// Divendres
+      horario[ConstValues.DAY_V] = horesDeClasseDijous;
+    }else{
+      List<int> horesDeClasseDivendres = new List<int>(); // Divendres
+      horesDeClasseDivendres.add(list[4]);
+      horario[ConstValues.DAY_V] = horesDeClasseDivendres;
+    }
+
+    map[ConstValues.HORARIO] = horario;
+
+    Subject subject = new Subject(name);
+    subject.data = map;
+
+    HomePage.dataBase[name] = subject;
   }
 }
 
