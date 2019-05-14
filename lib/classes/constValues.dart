@@ -31,7 +31,8 @@ class ConstValues{
       static const String ADDPENDENT = "ADD+";
       static const String ADDONE = "ADD1";
       static const String INFORMATION = "INFO";
-      static const String END = "ENDCHATBOT"; // Maybe DOWNLOAD too
+      static const String SHOW = "SHOW"; // mostrar horario construido
+      static const String END = "ENDD"; // Maybe DOWNLOAD too
 
   //    Atributos de asignatura
       static const String SEMESTRE = "SEMESTRE";
