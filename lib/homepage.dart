@@ -46,54 +46,52 @@ class HomePage extends StatelessWidget{
 
   void initSubjects() {
     //asignaturas de 1o
-    createSubject("PROG I", "Anual", 1, 10, [1, -1, 1, -1, 1]);
+    createSubject("PROG", "Anual", 1, 10, [1, -1, 1, -1, 1]);
     createSubject("IO", "Anual", 1, 9, [3, -1, 0, 0, 0]);
-    createSubject("Business", "Anual", 1, 4, [0, -1, 4, -1, -1]);
+    createSubject("BUSINESS", "Anual", 1, 4, [0, -1, 4, -1, -1]);
     createSubject("ALGEBRA", "Anual", 1, 8, [-1, -1, 2, -1, 2]);
-    createSubject("PiC I", "Anual", 1, 2, [-1, -1, -1, 3, -1]);
+    createSubject("PIC1", "Anual", 1, 2, [-1, -1, -1, 3, -1]);
     createSubject("CALCULO", "Anual", 1, 10, [2, 3, -1, 2, -1]);
-    createSubject("DiU I", "Anual", 1, 5, [-1, 1, -1, -1, -1]);
-    createSubject("ELECTRO I", "Anual", 1, 12, [-1, -1, -1, 3, -1]);
+    createSubject("DIU", "Anual", 1, 5, [-1, 1, -1, -1, -1]);
+    createSubject("ELECTRO", "Anual", 1, 12, [-1, -1, -1, 3, -1]);
 
     //asignaturas de 2o
     createSubject("PAED", "Anual", 2, 8, [-1, -1, 4, 4, 4]);
     createSubject("MATES", "Anual", 2, 8, [3, 0, 3, 2, 0]);
     createSubject("DPOO", "Anual", 2, 6, [1, 0, 1, 0, 0]);
     createSubject("COMPUS", "Anual", 2, 9, [-1, 3, 2, -1, 2]);
-    createSubject("PIC II", "Anual", 2, 2, [4, -1, -1, -1, -1]);
+    createSubject("PIC2", "Anual", 2, 2, [4, -1, -1, -1, -1]);
     createSubject("XARXES", "Anual", 2, 6, [-1, 2, -1, 3, -1]);
     createSubject("BASES", "Anual", 2, 5, [2, -1, -1, -1, 1]);
-    createSubject("VALUE CHAIN", "Anual", 2, 4, [1, 0, -1, -1, 1]);
-    createSubject("PROYECTOS DE PROGRMACIÓN I", "Semestral (1er sem.)", 2, 3, [-1, 1, -1, -1, 3]);
-    createSubject("PROYECTOS DE PROGRMACIÓN II", "Semestral (2ndo sem.)", 2, 4, [-1, 1, -1, -1, 3]);
-    createDoubleHourSubject("PROGRAMACION DE GRAFICOS 3D", "Semestral (1er sem.)", 2, 5, 4, [0, 1]);
+    createSubject("VALUE", "Anual", 2, 4, [1, 0, -1, -1, 1]);
+    createSubject("PPROG1", "Semestral (1er sem.)", 2, 3, [-1, 1, -1, -1, 3]);
+    createSubject("PPROG2", "Semestral (2ndo sem.)", 2, 4, [-1, 1, -1, -1, 3]);
+    createDoubleHourSubject("GRAFICOS3D", "Semestral (1er sem.)", 2, 5, 4, [0, 1]);
 
     //asignaturas de 3o
-    createSubject("PIC III", "Anual", 3, 3, [-1, 1, 3, -1, -1]);
+    createSubject("PIC3", "Anual", 3, 3, [-1, 1, 3, -1, -1]);
     createSubject("SO", "Semestral (1er sem.)", 3, 5, [6, -1, 5, -1, -1]);
-    createSubject("WEB I", "Semestral (1er sem.)", 3, 4, [-1, 8, -1, 7, -1]);
-    createSubject("SO", "Semestral (1er sem.)", 3, 5, [6, -1, 5, -1, -1]);
-    createSubject("METODOLOGÍA DEL SOFTWARE I", "Semestral (1er sem.)", 3, 4, [5, -1, 5, -1, -1]);
-    createSubject("INTERCONEXIÓN DE REDES DE DATOS", "Semestral (1er sem.)", 3, 4, [-1, 5, -1, -1, 6]);
-    createSubject("ADMINISTRACIÓN Y DISEÑO DE SISTEMAS", "Semestral (1er sem.)", 3, 6, [7, -1, 7, -1, 7]);
+    createSubject("WEB1", "Semestral (1er sem.)", 3, 4, [-1, 8, -1, 7, -1]);
     createSubject("SOA", "Semestral (2ndo sem.)", 3, 4, [-1, -1, 6, -1, 5]);
-    createSubject("WEB II", "Semestral (2ndo sem.)", 3, 5, [-1, -1, -1, 7, 7]);
+    createSubject("METODOLOGIA1", "Semestral (1er sem.)", 3, 4, [5, -1, 5, -1, -1]);
+    createSubject("INTERCONE", "Semestral (1er sem.)", 3, 4, [-1, 5, -1, -1, 6]);
+    createSubject("ASO", "Semestral (1er sem.)", 3, 6, [7, -1, 7, -1, 7]);
+    createSubject("WEB2", "Semestral (2ndo sem.)", 3, 5, [-1, -1, -1, 7, 7]);
     createSubject("PERIFERICOS", "Semestral (2ndo sem.)", 3, 4, [8, 8, -1, -1, -1]);
-    createDoubleHourSubject("LENGUAJES DE PROGRAMACION", "Semestral (2ndo sem.)", 3, 6, 5, [6, 7]);
-    createDoubleHourSubject("PROGRAMACION DE GRAFICOS 3D", "Semestral (1er sem.)", 2, 5, 4, [0, 1]);
+    createDoubleHourSubject("COMPILADORES", "Semestral (2ndo sem.)", 3, 6, 5, [6, 7]);
     createDoubleHourSubject("OM", "Semestral (2ndo sem.)", 3, 3, 1, [5, 6]);
-    createDoubleHourSubject("SISTEMAS BASADOS EN EL CONOCIMIENTO", "Semestral (2NDO sem.)", 3, 4, 4, [5, 6]);
+    createDoubleHourSubject("SBC", "Semestral (2NDO sem.)", 3, 4, 4, [5, 6]);
 
     //ASIGNATURAS DE 4O
-    createSubject("METODOLOGÍA DEL SOFTWARE II", "Semestral (1er sem.)", 4, 4, [6, -1, -1, -1, 5]);
-    createSubject("PROYECTOS EN ARQUITECTURA DISTRIBUIDA", "Semestral (1er sem.)", 4, 4, [5, -1, -1, 5, -1]);
-    createSubject("SEGURIDAD EN LAS TIC", "Semestral (2ndo sem.)", 4, 4, [5, 5, -1, -1, 5]);
+    createSubject("METODOLOGIA2", "Semestral (1er sem.)", 4, 4, [6, -1, -1, -1, 5]);
+    createSubject("ARQ.DISTRIBUIDA", "Semestral (1er sem.)", 4, 4, [5, -1, -1, 5, -1]);
+    createSubject("SEG.TIC", "Semestral (2ndo sem.)", 4, 4, [5, 5, -1, -1, 5]);
     createSubject("ENTREPENEURSHIP", "Semestral (2ndo sem.)", 4, 3, [-1, -1, -1, 5, -1]);
-    createDoubleHourSubject("PROGRAMACION DE DISPOSITIVOS MOVILES", "Semestral (1er sem.)", 4, 4, 2, [5, 6]);
-    createDoubleHourSubject("PROJECT MANAGMENT", "Semestral (1er sem.)", 4, 3, 3, [5, 6]);
-    createDoubleHourSubject("ARQUITECTURA DE COMPUTADORES", "Semestral (1er sem.)", 4, 5, 5, [6, 7]);
-    createDoubleHourSubject("MINERIA DE DATOS", "Semestral (1er sem.)", 4, 5, 4, [6, 7]);
-    createDoubleHourSubject("TENDENCIAS TECNOLÓGICAS", "Semestral (2ndo sem.)", 4, 4, 4, [6, 7]);
+    createDoubleHourSubject("IOS", "Semestral (1er sem.)", 4, 4, 2, [5, 6]);
+    createDoubleHourSubject("PM", "Semestral (1er sem.)", 4, 3, 3, [5, 6]);
+    createDoubleHourSubject("ARQUITECTURA", "Semestral (1er sem.)", 4, 5, 5, [6, 7]);
+    createDoubleHourSubject("MINERIA", "Semestral (1er sem.)", 4, 5, 4, [6, 7]);
+    createDoubleHourSubject("TEND.TECNOLOGICAS", "Semestral (2ndo sem.)", 4, 4, 4, [6, 7]);
   }
 
   void createDoubleHourSubject(String nombre, String duracion, int curso, int creditos, int dia_semana, List<int> list){
