@@ -38,11 +38,10 @@ class Message extends StatelessWidget {
     }
   }
 
-  Widget buildSchedule(WeekSchedule studentSchedule){
-    List<Container> subjects = new List(DaySchedule.MAX_HORES * 5);
-    int k;
+  static Widget buildSchedule(WeekSchedule studentSchedule){
+    List<Container> subjects = new List<Container>();
     for(int i = 0; i < 5; i++){
-      for(int j = 0; j < DaySchedule.MAX_HORES; j++, k++){
+      for(int j = 0; j < DaySchedule.MAX_HORES; j++){
         if(studentSchedule.dies[i].isFree(j)){
           // Creem el text buit
           subjects.add(new Container(

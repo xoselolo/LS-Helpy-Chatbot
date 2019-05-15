@@ -6,6 +6,7 @@ import 'package:lshelpy_chatbot/classes/schedule.dart';
 import 'package:lshelpy_chatbot/classes/constValues.dart';
 // Flutter library
 import 'package:flutter_dialogflow/dialogflow_v2.dart';
+import 'package:lshelpy_chatbot/mihorariopage.dart';
 import 'package:path/path.dart';
 
 class HomePage extends StatelessWidget{
@@ -352,7 +353,7 @@ class ChatScreenState extends State<ChatScreen> {
 
   }
 
-  Widget _chatEnvironment (){
+  Widget _chatEnvironment (BuildContext context){
     return IconTheme(
       data: new IconThemeData(color: Colors.pink),
       child: new Container(
@@ -400,7 +401,7 @@ class ChatScreenState extends State<ChatScreen> {
         new Container(decoration: new BoxDecoration(
           color: Theme.of(context).cardColor,
         ),
-          child: _chatEnvironment(),)
+          child: _chatEnvironment(context),)
       ],
     );
   }
@@ -438,45 +439,60 @@ class ChatScreenState extends State<ChatScreen> {
           }else if (fase == ConstValues.fase2){// --------- FASE 2
             // fase2 NAME $namelist fase2 Encantado de conocerte $namelist . Qué curso harás el año que viene?
             String NAMETag = botMessage.substring(6, 10);
-            print("NAME TAGE: " + NAMETag);
+            print("NAME TAG: " + NAMETag);
 
-            HomePage.studentName = getWord(botMessage, 11);
-            print("Student name: " + HomePage.studentName);
-            int index = 11 + HomePage.studentName.length;
+            if(NAMETag != "NAME"){
+              sendMessage(botMessage.substring(6, botMessage.length));
+            }else{
+              HomePage.studentName = getWord(botMessage, 11);
+              print("Student name: " + HomePage.studentName);
+              int index = 11 + HomePage.studentName.length;
 
-            index++;
-            String basura = getWord(botMessage, index);
-            //basura = getWord(botMessage, index);
-            print("Basura: " + basura);
+              index++;
+              String basura = getWord(botMessage, index);
+              //basura = getWord(botMessage, index);
+              print("Basura: " + basura);
 
-            index += basura.length;
-            String resposta = botMessage.substring(index, botMessage.length);
-            sendMessage(resposta);
+              index += basura.length;
+              String resposta = botMessage.substring(index, botMessage.length);
+              sendMessage(resposta);
+            }
+
+
 
           }else if (fase == ConstValues.fase3){// --------- FASE 3
             // fase3 CURS $number fase3 Así que $number... Escribe las asignaturas pendientes de años anteriores que quieras añadir a tu horario.
             String CURStag = botMessage.substring(6, 10);
             print("CURS TAG: " + CURStag);
 
-            String course = getWord(botMessage, 11);
-            print("Student course: " + course);
-            HomePage.studentCourse = int.parse(course);
-            int index = 11 + course.length;
+            if(CURStag != "CURS"){
+              sendMessage(botMessage.substring(6, botMessage.length));
+            }else{
+              String course = getWord(botMessage, 11);
+              print("Student course: " + course);
+              HomePage.studentCourse = int.parse(course);
+              int index = 11 + course.length;
 
-            index++;
-            String basura = getWord(botMessage, index);
-            print("Basura: " + basura);
+              index++;
+              String basura = getWord(botMessage, index);
+              print("Basura: " + basura);
 
-            index += basura.length;
-            String resposta = botMessage.substring(index, botMessage.length);
-            sendMessage(resposta);
+              index += basura.length;
+              String resposta = botMessage.substring(index, botMessage.length);
+              sendMessage(resposta);
+            }
+
+
 
           }else if (fase == ConstValues.fase5){
+            WeekSchedule horario = HomePage.studentSchedule;
             String message = botMessage.substring(6, botMessage.length);
             print("FASE5 MESSAGE : " + message);
             sendMessage(message);
 
             // Crear pdf y descargarlo -> TODO
+            MiHorarioPage.studentSchedule = HomePage.studentSchedule;
+            Navigator.push(this.context, MaterialPageRoute(builder: (context) => MiHorarioPage()));
 
           }else if (fase == ConstValues.fase4){// --------- FASE 4
 
@@ -515,94 +531,7 @@ class ChatScreenState extends State<ChatScreen> {
             print("ACTION: " + action);
 
             int index = 6 + action.length;
-            if(action == ConstValues.ADDPENDENT){ // Afegim assignatures pendents
-              // PAS 1.1
-              String asignatura = "";
-              while(botMessage[index + 1] != '%'){// Hemos puesto '%' como signo de clausura
-                index++;
-                asignatura = getWord(botMessage, index);
-                print("Asignaturas: " + asignatura);
-                if(asignatura != "y" && asignatura != "%"){
-                  // Obtener datos de la asignatura
-                  Subject subject = HomePage.dataBase[asignatura];
-                  print("\tAsignatura de la Base de Dades: " + subject.name);
-                  print("Créditos de " + subject.name + ": " + (subject.data[ConstValues.CREDITOS]).toString());
-
-                  // Añadir asignatura al horario
-                  Map<String, List<int>> horario = subject.data[ConstValues.HORARIO];
-                  List<int> horesDia = horario[ConstValues.DAY_L]; // Hores de dilluns
-                  int size;
-                  if(horesDia != null){
-                    if(horesDia.isNotEmpty){
-                      size = horesDia.length;
-                      for(int i = 0; i < size; i++){
-                        HomePage.studentSchedule.addSubject(subject, 0, horesDia.elementAt(i));
-                      }
-                    }
-                  }
-
-
-                  horesDia = horario[ConstValues.DAY_M]; // Hores de dimarts
-                  if(horesDia != null){
-                    if(horesDia.isNotEmpty){
-                      size = horesDia.length;
-                      for(int i = 0; i < size; i++){
-                        HomePage.studentSchedule.addSubject(subject, 1, horesDia.elementAt(i));
-                      }
-                    }
-                  }
-
-
-                  horesDia = horario[ConstValues.DAY_X]; // Hores de dimecres
-                  if(horesDia != null){
-                    if(horesDia.isNotEmpty){
-                      size = horesDia.length;
-                      for(int i = 0; i < size; i++){
-                        HomePage.studentSchedule.addSubject(subject, 2, horesDia.elementAt(i));
-                      }
-                    }
-                  }
-
-
-                  horesDia = horario[ConstValues.DAY_J]; // Hores de dijous
-                  if(horesDia != null){
-                    if(horesDia.isNotEmpty){
-                      size = horesDia.length;
-                      for(int i = 0; i < size; i++){
-                        HomePage.studentSchedule.addSubject(subject, 3, horesDia.elementAt(i));
-                      }
-                    }
-                  }
-
-
-                  horesDia = horario[ConstValues.DAY_V]; // Hores de dimarts
-                  if(horesDia != null){
-                    if(horesDia.isNotEmpty){
-                      size = horesDia.length;
-                      for(int i = 0; i < size; i++){
-                        HomePage.studentSchedule.addSubject(subject, 4, horesDia.elementAt(i));
-                      }
-                    }
-                  }
-
-                  // Asignatura añadida al horario
-                  sendMessage(subject.name + " añadida al horario!");
-
-                }
-                index += asignatura.length;
-              }
-
-              //WeekSchedule schedule = HomePage.studentSchedule;
-              //print("Horario");
-              // TODO:
-              //    maybeNot -> Enviar mensaje de fase4 SHOW
-              //    -> mostrar el horario
-              //    Enviar mensaje de fase4 MORE
-              //    En la respuesta con action = MORE mostrar el mensaje ( para que no siempre sea el mismo )
-
-              // TODO: Falta por añadir la action tambien de FINISH
-
-            }else if(action == ConstValues.ADDONE){ // Afegim asignatures
+            if(action == ConstValues.ADDONE){ // Afegim asignatures
                           // (en veritat són varies assignatures, però així diferenciem)
               // PAS 1.2
 //              WeekSchedule schedule = HomePage.studentSchedule;
@@ -798,10 +727,8 @@ class ChatScreenState extends State<ChatScreen> {
               //sendMessage("QUIERES INFO");
               mostrarMensajeQueMas();
 
-            }else{ // Demanem acabar (descarregar horari i tancar conversacio )
-              // PAS 1.4
-              sendMessage("QUIERES ACABAR");
-              print("Resposta del bot: " + botMessage);
+            }else{
+              sendMessage("No entendí ni wueva");
             }
           }
 
