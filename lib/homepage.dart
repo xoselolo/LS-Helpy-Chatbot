@@ -68,7 +68,7 @@ class HomePage extends StatelessWidget{
     createSubject("DIU", "Anual", 1, 5, [-1, 1, -1, -1, -1], "EVA VILLEGAS PORTERO", descripcion);
 
     descripcion = "Primero se ven los fundamentos básicos de la electrónica, así como las técnicas necesarias para el análisis de circuitos en dominio temporal. Posteriormente se estudian diferentes componentes electrónicos (resistores lineales y no lineales, condensadores, bobinas, transformadores, díodos, transistores,...) tanto a nivel ideal como real, referenciando estos estudios a documentación actualizada de distintos fabricantes.";
-    createSubject("ELECTRO", "Anual", 1, 12, [-1, -1, -1, 3, -1], "XAVIER SENMARTI SENMARTI", descripcion);
+    createSubject("ELECTRO", "Anual", 1, 12, [-1, 2, 3, 1, 3], "XAVIER SENMARTI SENMARTI", descripcion);
 
 
 
@@ -77,10 +77,10 @@ class HomePage extends StatelessWidget{
     createSubject("PAED", "Anual", 2, 8, [-1, -1, 4, 4, 4], "XAVIER SOLÉ BETETA", descripcion);
 
     descripcion = "La asignatura da una visión avanzada de las herramientas matemáticas que una titulación tecnológica requiere. Consta de tres capítulos: Las ecuaciones diferenciales, las funciones de varias variables, y la probabilidad y la estadística. En el capítulo de ecuaciones diferenciales se estudia la formación, uso y resolución de las ecuaciones diferenciales ordinarias. En el capítulo de funciones de varias variables se estudian el cálculo de límites, derivadas parciales, diferenciales, ecuaciones con derivadas parciales, cambios de variable, gradientes, máximos y mínimos condicionados y la integración múltiple (integrales dobles y triples). ";
-    createSubject("MATES", "Anual", 2, 8, [3, 0, 3, 2, 0], "XAVIER SEVILLANO DOMÍNGUEZ", descripcion);
+    createSubject("MATES", "Anual", 2, 8, [3, -1, 3, 2, -1], "XAVIER SEVILLANO DOMÍNGUEZ", descripcion);
 
     descripcion = "Los descriptores generales de contenidos de la asignatura son: - Introducción a la Orientación a Objetos - Características de la Orientación a Objetos - Análisis Orientado a Objetos - Diseño Orientado a Objetos - Implementación en Lenguaje Java - Patrones de diseño (GRASP, MVC y GOF) - Estructuras de datos lineales - Bases de datos - Diagrama de actividades - Diagrama de secuencia - Diagrama de paquetes - Diagrama de clases";
-    createSubject("DPOO", "Anual", 2, 6, [1, 0, 1, 0, 0], "EDUARD DE TORRES GÓMEZ", descripcion);
+    createSubject("DPOO", "Anual", 2, 6, [1, -1, 1, -1, -1], "EDUARD DE TORRES GÓMEZ", descripcion);
 
     descripcion = "En esta asignatura se explican las técnicas y la metodología para el diseño de sistemas digitales. Se inicia con el estudio de sistemas secuenciales. A partir de estos sistemas el alumno puede abordar el diseño de sistemas digitales síncronos de proceso específico. Seguidamente, se estudia el diseño de sistemas con microprocesadores y microcontroladores.";
     createSubject("COMPUS", "Anual", 2, 9, [-1, 3, 2, -1, 2], "JOAN NAVARRO MARTÍN", descripcion);
@@ -94,7 +94,7 @@ class HomePage extends StatelessWidget{
     createSubject("BASES", "Anual", 2, 5, [2, -1, -1, -1, 1], "JOAN NAVARRO MARTÍN", descripcion);
 
     descripcion = "En el competitivo mundo empresarial de hoy, se hace muy difícil crecer de manera sana y constante. Podemos ver que incluso algunas empresas luchan simplemente por sobrevivir. Con el fin de poder asegurar su futuro, la empresa debe gozar de una buena salud financiera. Sin una adecuada gestión económica de la empresa, probablemente la compañía desaparecerá.";
-    createSubject("VALUE", "Anual", 2, 4, [1, 0, -1, -1, 1], "JOSEP PETCHAMÉ SABARTÉS", descripcion);
+    createSubject("VALUE", "Anual", 2, 4, [-1, 0, -1, -1, -1], "JOSEP PETCHAMÉ SABARTÉS", descripcion);
 
     descripcion = "La programación es una ciencia principalmente práctica, y como la mayoría de ciencias prácticas, esta se estructura en proyectos. Esta es la premisa de la cual parte la asignatura de Proyectos de Programación 1. El objetivo de la asignatura es profundizar en el mundo de la programación a través del desarrollo de prácticas y proyectos que permitan que el aprendizaje sea dinámico, práctico, auto-didáctico y colaborativo";
     createSubject("PPROG1", "Semestral (1er sem.)", 2, 3, [-1, 1, -1, -1, 3], "EDUARD DE TORRES GÓMEZ", descripcion);
@@ -108,10 +108,10 @@ class HomePage extends StatelessWidget{
 
 
     //asignaturas de 3o
-    createSubject("PIC3", "Anual", 3, 3, [-1, 1, 3, -1, -1], "DAVID CASADO REDON", "No hay descripción disponible de la asignatura");
+    createSubject("PIC3", "Anual", 3, 3, [-1, -1, 3, -1, -1], "DAVID CASADO REDON", "No hay descripción disponible de la asignatura");
 
     descripcion = "n sistema operativo es una capa de software que se ejecuta sobre un hardware con el objetivo de proporcionar una serie de servicios. El objetivo de la asignatura es dar a conocer un sistema operativo en todas sus partes y, de este modo, dotar al alumno de conocimientos sobre uno de los componentes más importantes en los sistemas informáticos hoy en día. Desde el punto de vista práctico, se realizan prácticas que implementan diversas funcionalidades, políticas o técnicas de un sistema operativo. ";
-    createSubject("SO", "Semestral (1er sem.)", 3, 5, [6, -1, 5, -1, -1], "XAVIER CANALETA", descripcion);
+    createSubject("SO", "Semestral (1er sem.)", 3, 5, [6, -1, 6, 6, -1], "XAVIER CANALETA", descripcion);
 
     descripcion = "Esta asignatura se centra en el diseño de arquitecturas software para el desarrollo de aplicaciones interactivas con interficie de usuario independientes de plataformas o frameworks de desarrollo. La primera parte del curso plantea los principios esenciales del diseño de arquitecturas orientadas a objetos, así como el uso de patrones, buenas prácticas de diseño y metodologías para la planificación y gestión de los diferentes ciclos de vida del software. Paralelamente se abordan los fundamentos básicos de las plataformas Java y .NET, y cada semana se estudian conceptos más avanzados hasta acabar el curso, de manera que el alumno habrá aprendido a crear cualquier aplicación de escritorio con interficie gráfica y conectividad de red. ";
     createSubject("WEB1", "Semestral (1er sem.)", 3, 4, [-1, 8, -1, 7, -1], "DANIEL AMO FILVÀ", descripcion);
@@ -120,7 +120,7 @@ class HomePage extends StatelessWidget{
     createSubject("SOA", "Semestral (2ndo sem.)", 3, 4, [-1, -1, 6, -1, 5], "ALFREDO RUEDA UNSAIN", descripcion);
 
     descripcion = "No hay descripción disponible de la asignatura";
-    createSubject("METODOLOGIA1", "Semestral (1er sem.)", 3, 4, [5, -1, 5, -1, -1], "MARC CAMPMANY LLORENS", descripcion);
+    createSubject("METODOLOGIA1", "Semestral (1er sem.)", 3, 4, [5, -1, -1, 5, -1], "MARC CAMPMANY LLORENS", descripcion);
 
     descripcion = "La asignatura forma al alumno en las tecnologías WAN que permiten la interconexión de redes a nivel global, las redes troncales y las redes de acceso, así como en el diseño de redes globales dentro de entornos totalmente heterogéneos con aplicación de tecnologías de calidad de servicios (QoS) que permiten la integración de todo tipo de servicios.";
     createSubject("INTERCONE", "Semestral (1er sem.)", 3, 4, [-1, 5, -1, -1, 6], "JAUME ABELLA", descripcion);
@@ -129,13 +129,10 @@ class HomePage extends StatelessWidget{
     createSubject("ASO", "Semestral (1er sem.)", 3, 6, [7, -1, 7, -1, 7], "ALFREDO RUEDA UNSAIN", descripcion);
 
     descripcion = "La asignatura introduce al alumno en la manera actual de desarrollar aplicaciones web de cualquier magnitud. El alumno aprenderá cuál es el entorno de desarrollo actual para este tipo de aplicaciones y los pondrá en práctica cada día. Se analizarán también las tendencias tecnológicas del momento en este sector, con la finalidad de irlas incorporando en el currículum del alumno. ";
-    createSubject("WEB2", "Semestral (2ndo sem.)", 3, 5, [-1, -1, -1, 7, 7], "JAUME CAPDEVILA", descripcion);
+    createSubject("WEB2", "Semestral (2ndo sem.)", 3, 5, [-1, -1, 7, 7, -1], "JAUME CAPDEVILA", descripcion);
 
     descripcion = "La asignatura da una visión de los elementos de entrada / salida del computador más suscebtibles de ser manipulados por un programador. Para ello, en el primer tema se introducen los conceptos genéricos y se estudian las técnicas de sincronismo y de gestión de las transferencias de datos y en los siguientes se desarrollan las técnicas de acceso y control a los periféricos en base a la metodología de programación cooperativa propia de la Salle.";
     createSubject("PERIFERICOS", "Semestral (2ndo sem.)", 3, 4, [8, 8, -1, -1, -1], "JOSEP MARIA RIO DOVAL", descripcion);
-
-    descripcion = "Al acabar el curso el alumno: -	Conoce los fundamentos básicos por la definición formal de lenguajes de programación. - Usa correctamente las técnicas para la implementación de lenguajes de programación. -	Conoce los diferentes paradigmas de programación. -	Tiene la capacidad suficiente para escoger el lenguaje de programación más adecuado por la resolución de un problema.";
-    createDoubleHourSubject("COMPILADORES", "Semestral (2ndo sem.)", 3, 6, 5, [6, 7], "EDUARD FERNANDEZ ALONSO", descripcion);
 
     descripcion = "Primera visión empresarial para lograr los conocimientos básicos de la organización de empresa. Se imparten conceptos de Estrategia, Modelo de Negocio, Habilidades Directivas y Marketing.";
     createDoubleHourSubject("OM", "Semestral (2ndo sem.)", 3, 3, 1, [5, 6], "SÒNIA LUENGO ALVAREZ", descripcion);
@@ -173,7 +170,42 @@ class HomePage extends StatelessWidget{
 
     descripcion = "Esta asignatura pretende mostrar métodos y tecnologías avanzadas en el mundo de la multimedia. Su enfoque es claramente divulgativo. Se pretende que los alumnos reciban una visión general de las líneas de investigación más importantes en el ámbito de las tecnologías multimedia en la actualidad.";
     createDoubleHourSubject("TEND.TECNOLOGICAS", "Semestral (2ndo sem.)", 4, 4, 4, [6, 7], "DAVID MIRALLES ESTEBAN", descripcion);
+
+    //especiales
+    String name = "COMPILADORES";
+    Map<String, Object> map = new Map();
+    map[ConstValues.SEMESTRE] = "Semestral (2ndo sem.)"; // Tipus d'assignatura
+    map[ConstValues.CURS] = 3; // Curs
+    map[ConstValues.CREDITOS] = 6; // Num de credits
+    map[ConstValues.PROFESOR] = "EDUARD FERNANDEZ ALONSO";
+    descripcion = "Al acabar el curso el alumno: -	Conoce los fundamentos básicos por la definición formal de lenguajes de programación. - Usa correctamente las técnicas para la implementación de lenguajes de programación. -	Conoce los diferentes paradigmas de programación. -	Tiene la capacidad suficiente para escoger el lenguaje de programación más adecuado por la resolución de un problema.";
+    map[ConstValues.DESCRIPCION] = descripcion;
+
+    Map<String, List<int>> horario = new Map<String, List<int>>(); // horario
+
+    List<int> horesDeClasseDilluns = new List<int>();// Dilluns
+    horario[ConstValues.DAY_L] = horesDeClasseDilluns;
+    horario[ConstValues.DAY_M] = horesDeClasseDilluns;
+    horario[ConstValues.DAY_X] = horesDeClasseDilluns;
+
+    horesDeClasseDilluns.add(8);
+    horario[ConstValues.DAY_J] = horesDeClasseDilluns;
+
+    horesDeClasseDilluns = new List<int>();// Dilluns
+    horesDeClasseDilluns.add(6);
+    horesDeClasseDilluns.add(7);
+    horario[ConstValues.DAY_V] = horesDeClasseDilluns;
+
+
+    map[ConstValues.HORARIO] = horario;
+
+    Subject subject = new Subject(name);
+    subject.data = map;
+
+    HomePage.dataBase[name] = subject;
   }
+
+
 
   void createDoubleHourSubject(String nombre, String duracion, int curso, int creditos, int dia_semana, List<int> list, String profesor, String descripcion){
     String name = nombre;
