@@ -39,6 +39,8 @@ class ConstValues{
       static const String CURS = "CURS";
       static const String CREDITOS = "CREDITOS";
       static const String HORARIO = "HORARIO";
+      static const String PROFESOR = "PROFESOR";
+      static const String DESCRIPCION = "DESCRIPCION";
 
   //    Dias de la semana laborables
       static const String DAY_L = "LUNES";

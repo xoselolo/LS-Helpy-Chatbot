@@ -45,61 +45,145 @@ class HomePage extends StatelessWidget{
   }
 
   void initSubjects() {
+    String descripcion;
     //asignaturas de 1o
-    createSubject("PROG", "Anual", 1, 10, [1, -1, 1, -1, 1]);
-    createSubject("IO", "Anual", 1, 9, [3, -1, 0, 0, 0]);
-    createSubject("BUSINESS", "Anual", 1, 4, [0, -1, 4, -1, -1]);
-    createSubject("ALGEBRA", "Anual", 1, 8, [-1, -1, 2, -1, 2]);
-    createSubject("PIC1", "Anual", 1, 2, [-1, -1, -1, 3, -1]);
-    createSubject("CALCULO", "Anual", 1, 10, [2, 3, -1, 2, -1]);
-    createSubject("DIU", "Anual", 1, 5, [-1, 1, -1, -1, -1]);
-    createSubject("ELECTRO", "Anual", 1, 12, [-1, -1, -1, 3, -1]);
+    descripcion = "La asignatura está pensada para cualquier estudiante de primer curso de una Ingeniería. Se trata de una introducción al mundo de la programación de ordenadores. Se estudian los conceptos elementales como son el de ordenador y el de lenguaje de programación. Toda la introducción a la algorítmica se realiza mediante un lenguaje de pseudocódigo, que nos permite discernir los conceptos teóricos de aquellos que son claramente prácticos, relacionados con los lenguajes de programación.";
+    createSubject("PROG", "Anual", 1, 10, [1, -1, 1, -1, 1], "DAVID VERNET BELLET", descripcion);
+
+    descripcion = "La asignatura pretende iniciar al alumno en el funcionamiento de los ordenadores y se estructura en cuatro partes. En la primera parte se estudia álgebra de Boole para entender la representación de la información en los computadores. En la segunda parte se dan a conocer los sistemas combinacionales y la aritmética binaria, los circuitos digitales más básicos de un computador. En la tercera parte se estudia la base del funcionamiento de la unidad de control de los ordenadores y como se memoriza la información. En la cuarta y última parte se estudian pequeños sistemas secuenciales que forman las unidades de control de los computadores";
+    createSubject("IO", "Anual", 1, 9, [3, -1, 0, 0, 0], "IGNACIO BLÁZQUEZ GARCÍA", descripcion);
+
+    descripcion = "La asignatura tiene dos partes, la teórica y la práctica que se ha de aprobar por separado. La parte teórica consiste en trabajar la parte escrita y oral del alumno y su capacidad de comprensión. La parte práctica consiste en asistir a una conferencia semanal dirigida por un profesor especializado en las áreas d´economía, ingeniería o gestión y entregar 2 trabajos por trimestre.";
+    createSubject("BUSINESS", "Anual", 1, 4, [0, -1, 4, -1, -1], "LISA KINNEAR", descripcion);
+
+    descripcion = "En esta asignatura se presentan al alumno los temas clásicos de un primer curso de álgebra lineal. Se intenta, sin embargo, que el alumno no sólo asimile los conceptos teóricos adecuadamente, sino que también los asocie con situaciones y problemas reales del mundo técnico. Es decir, se hace mucho énfasis en que el alumno vea el álgebra como una herramienta más para solucionar problemas reales.";
+    createSubject("ALGEBRA", "Anual", 1, 8, [-1, -1, 2, -1, 2], "JOSÉ ANTONIO MONTERO MORALES", descripcion);
+
+    createSubject("PIC1", "Anual", 1, 2, [-1, -1, -1, 3, -1], "DAVID CASADO REDON", "No hay una descripcion para esta asignatura");
+
+    descripcion = "En esta asignatura se presentan al alumno los temas básicos de análisis matemático que cualquier ingeniero/a requiere para la comprensión de los conceptos de la carrera. Esta asignatura es prerrequisito de la asignatura de Estadística y análisis matemático, de 2o curso de Ingeniería y de otras asignaturas dependiendo de la ingeniería cursada. Se intenta que el alumno no se quede sólo con las definiciones y demostraciones teóricas, sino que sepa aplicar estos conocimientos a la resolución de problemas. Con este propósito se hacen sesiones de ejercicios por parte del profesor.";
+    createSubject("CALCULO", "Anual", 1, 10, [2, 3, -1, 2, -1], "IGNASI IRIONDO", descripcion);
+
+    descripcion = "La asignatura se basa en los conceptos básicos de usabilidad aplicados a Internet, móvil quioscos interactivos, etc. y en técnicas de evaluación con usuarios para un diseño centrado en el usuario (DCU), así como en conceptos de diseño gráfico y en la utilización de los programas necesarios para lograr con éxito toda creación digital.";
+    createSubject("DIU", "Anual", 1, 5, [-1, 1, -1, -1, -1], "EVA VILLEGAS PORTERO", descripcion);
+
+    descripcion = "Primero se ven los fundamentos básicos de la electrónica, así como las técnicas necesarias para el análisis de circuitos en dominio temporal. Posteriormente se estudian diferentes componentes electrónicos (resistores lineales y no lineales, condensadores, bobinas, transformadores, díodos, transistores,...) tanto a nivel ideal como real, referenciando estos estudios a documentación actualizada de distintos fabricantes.";
+    createSubject("ELECTRO", "Anual", 1, 12, [-1, -1, -1, 3, -1], "XAVIER SENMARTI SENMARTI", descripcion);
+
+
 
     //asignaturas de 2o
-    createSubject("PAED", "Anual", 2, 8, [-1, -1, 4, 4, 4]);
-    createSubject("MATES", "Anual", 2, 8, [3, 0, 3, 2, 0]);
-    createSubject("DPOO", "Anual", 2, 6, [1, 0, 1, 0, 0]);
-    createSubject("COMPUS", "Anual", 2, 9, [-1, 3, 2, -1, 2]);
-    createSubject("PIC2", "Anual", 2, 2, [4, -1, -1, -1, -1]);
-    createSubject("XARXES", "Anual", 2, 6, [-1, 2, -1, 3, -1]);
-    createSubject("BASES", "Anual", 2, 5, [2, -1, -1, -1, 1]);
-    createSubject("VALUE", "Anual", 2, 4, [1, 0, -1, -1, 1]);
-    createSubject("PPROG1", "Semestral (1er sem.)", 2, 3, [-1, 1, -1, -1, 3]);
-    createSubject("PPROG2", "Semestral (2ndo sem.)", 2, 4, [-1, 1, -1, -1, 3]);
-    createDoubleHourSubject("GRAFICOS3D", "Semestral (1er sem.)", 2, 5, 4, [0, 1]);
+    descripcion = "La asignatura divide sus contenidos en dos partes claramente diferenciadas: - En la primera parte se trabaja el análisis algorítmico (costes, casos, notación asintótica, resolución de recurrencias simples), la especificación y la verificación formal de algoritmos recursivos simples. Se introduce el análisis de la eficiencia de los programas como un criterio más de calidad. Se estudia también el diseño de algoritmos recursivos simples y múltiples, y varias técnicas de resolución de problemas combinatorios. - En la segunda parte, se introduce el concepto y especificación de tipos abstractos de datos como estructuras de datos lineales, árboles, tablas y grafos.";
+    createSubject("PAED", "Anual", 2, 8, [-1, -1, 4, 4, 4], "XAVIER SOLÉ BETETA", descripcion);
+
+    descripcion = "La asignatura da una visión avanzada de las herramientas matemáticas que una titulación tecnológica requiere. Consta de tres capítulos: Las ecuaciones diferenciales, las funciones de varias variables, y la probabilidad y la estadística. En el capítulo de ecuaciones diferenciales se estudia la formación, uso y resolución de las ecuaciones diferenciales ordinarias. En el capítulo de funciones de varias variables se estudian el cálculo de límites, derivadas parciales, diferenciales, ecuaciones con derivadas parciales, cambios de variable, gradientes, máximos y mínimos condicionados y la integración múltiple (integrales dobles y triples). ";
+    createSubject("MATES", "Anual", 2, 8, [3, 0, 3, 2, 0], "XAVIER SEVILLANO DOMÍNGUEZ", descripcion);
+
+    descripcion = "Los descriptores generales de contenidos de la asignatura son: - Introducción a la Orientación a Objetos - Características de la Orientación a Objetos - Análisis Orientado a Objetos - Diseño Orientado a Objetos - Implementación en Lenguaje Java - Patrones de diseño (GRASP, MVC y GOF) - Estructuras de datos lineales - Bases de datos - Diagrama de actividades - Diagrama de secuencia - Diagrama de paquetes - Diagrama de clases";
+    createSubject("DPOO", "Anual", 2, 6, [1, 0, 1, 0, 0], "EDUARD DE TORRES GÓMEZ", descripcion);
+
+    descripcion = "En esta asignatura se explican las técnicas y la metodología para el diseño de sistemas digitales. Se inicia con el estudio de sistemas secuenciales. A partir de estos sistemas el alumno puede abordar el diseño de sistemas digitales síncronos de proceso específico. Seguidamente, se estudia el diseño de sistemas con microprocesadores y microcontroladores.";
+    createSubject("COMPUS", "Anual", 2, 9, [-1, 3, 2, -1, 2], "JOAN NAVARRO MARTÍN", descripcion);
+
+    createSubject("PIC2", "Anual", 2, 2, [4, -1, -1, -1, -1], "DAVID CASADO REDON", "No hay descripción disponible para esta asignatura");
+
+    descripcion = "En esta asignatura se pretende dar una visión amplia sobre las redes de comunicaciones y conseguir que el alumno se familiarice con conceptos y aplicaciones relacionadas con el campo de la telemática y las redes de ordenadores, especialmente enfocado a las redes de área local. Es por ello que la primera parte del curso permite introducir conceptos generales de las redes de datos y se profundiza en la arquitectura OSI, así como en la arquitectura TCP/IP";
+    createSubject("XARXES", "Anual", 2, 6, [-1, 2, -1, 3, -1], "GUIOMAR CORRAL TORRUELLA", descripcion);
+
+    descripcion = "Se tratan los conceptos básicos de archivos, conceptualización y caracterización de las estructuras de acceso a la memoria secundaria. Introducción a los sistemas gestores de bases de datos: conceptos i tipología, evolución histórica y sus lenguajes de acceso y principales funciones. Se introduce una prospectiva de las bases de datos orientadas a objetos. Asimismo se trabaja sobre el modelo de datos corporativo. Modelo E/R. Paso del modelo conceptual a la implementación.";
+    createSubject("BASES", "Anual", 2, 5, [2, -1, -1, -1, 1], "JOAN NAVARRO MARTÍN", descripcion);
+
+    descripcion = "En el competitivo mundo empresarial de hoy, se hace muy difícil crecer de manera sana y constante. Podemos ver que incluso algunas empresas luchan simplemente por sobrevivir. Con el fin de poder asegurar su futuro, la empresa debe gozar de una buena salud financiera. Sin una adecuada gestión económica de la empresa, probablemente la compañía desaparecerá.";
+    createSubject("VALUE", "Anual", 2, 4, [1, 0, -1, -1, 1], "JOSEP PETCHAMÉ SABARTÉS", descripcion);
+
+    descripcion = "La programación es una ciencia principalmente práctica, y como la mayoría de ciencias prácticas, esta se estructura en proyectos. Esta es la premisa de la cual parte la asignatura de Proyectos de Programación 1. El objetivo de la asignatura es profundizar en el mundo de la programación a través del desarrollo de prácticas y proyectos que permitan que el aprendizaje sea dinámico, práctico, auto-didáctico y colaborativo";
+    createSubject("PPROG1", "Semestral (1er sem.)", 2, 3, [-1, 1, -1, -1, 3], "EDUARD DE TORRES GÓMEZ", descripcion);
+
+    descripcion = "La programación es una ciencia principalmente práctica y, como la mayoría de ciencias prácticas, esta se estructura en proyectos. Esta es la premisa de la cual parte la asignatura de Proyectos de Programación 2. El objetivo principal de la asignatura es ampliar los conocimientos de los alumnos en el campo de la programación, presentándolos un nuevo ámbito: la programación para dispositivos móviles. Dado que el mundo de la programación para dispositivos móviles es muy amplio, la asignatura se centrará en el sistema que, de momento, tiene una mayor presencia en el mercado. Este sistema es Android. ";
+    createSubject("PPROG2", "Semestral (2ndo sem.)", 2, 4, [-1, 1, -1, -1, 3], "ALFREDO RUEDA", descripcion);
+
+    descripcion = "En esta asignatura se pretende que el alumno sea capaz de programar un sistema de visualización de gráficos 3D en tiempo real y que comprenda los cálculos y conceptos teóricos en que se basan sus algoritmos.";
+    createDoubleHourSubject("GRAFICOS3D", "Semestral (1er sem.)", 2, 5, 4, [0, 1], "ALUN THOMAS EVANS", descripcion);
+
+
 
     //asignaturas de 3o
-    createSubject("PIC3", "Anual", 3, 3, [-1, 1, 3, -1, -1]);
-    createSubject("SO", "Semestral (1er sem.)", 3, 5, [6, -1, 5, -1, -1]);
-    createSubject("WEB1", "Semestral (1er sem.)", 3, 4, [-1, 8, -1, 7, -1]);
-    createSubject("SOA", "Semestral (2ndo sem.)", 3, 4, [-1, -1, 6, -1, 5]);
-    createSubject("METODOLOGIA1", "Semestral (1er sem.)", 3, 4, [5, -1, 5, -1, -1]);
-    createSubject("INTERCONE", "Semestral (1er sem.)", 3, 4, [-1, 5, -1, -1, 6]);
-    createSubject("ASO", "Semestral (1er sem.)", 3, 6, [7, -1, 7, -1, 7]);
-    createSubject("WEB2", "Semestral (2ndo sem.)", 3, 5, [-1, -1, -1, 7, 7]);
-    createSubject("PERIFERICOS", "Semestral (2ndo sem.)", 3, 4, [8, 8, -1, -1, -1]);
-    createDoubleHourSubject("COMPILADORES", "Semestral (2ndo sem.)", 3, 6, 5, [6, 7]);
-    createDoubleHourSubject("OM", "Semestral (2ndo sem.)", 3, 3, 1, [5, 6]);
-    createDoubleHourSubject("SBC", "Semestral (2NDO sem.)", 3, 4, 4, [5, 6]);
+    createSubject("PIC3", "Anual", 3, 3, [-1, 1, 3, -1, -1], "DAVID CASADO REDON", "No hay descripción disponible de la asignatura");
+
+    descripcion = "n sistema operativo es una capa de software que se ejecuta sobre un hardware con el objetivo de proporcionar una serie de servicios. El objetivo de la asignatura es dar a conocer un sistema operativo en todas sus partes y, de este modo, dotar al alumno de conocimientos sobre uno de los componentes más importantes en los sistemas informáticos hoy en día. Desde el punto de vista práctico, se realizan prácticas que implementan diversas funcionalidades, políticas o técnicas de un sistema operativo. ";
+    createSubject("SO", "Semestral (1er sem.)", 3, 5, [6, -1, 5, -1, -1], "XAVIER CANALETA", descripcion);
+
+    descripcion = "Esta asignatura se centra en el diseño de arquitecturas software para el desarrollo de aplicaciones interactivas con interficie de usuario independientes de plataformas o frameworks de desarrollo. La primera parte del curso plantea los principios esenciales del diseño de arquitecturas orientadas a objetos, así como el uso de patrones, buenas prácticas de diseño y metodologías para la planificación y gestión de los diferentes ciclos de vida del software. Paralelamente se abordan los fundamentos básicos de las plataformas Java y .NET, y cada semana se estudian conceptos más avanzados hasta acabar el curso, de manera que el alumno habrá aprendido a crear cualquier aplicación de escritorio con interficie gráfica y conectividad de red. ";
+    createSubject("WEB1", "Semestral (1er sem.)", 3, 4, [-1, 8, -1, 7, -1], "DANIEL AMO FILVÀ", descripcion);
+
+    descripcion = "Un sistema operativo es una capa de software que se ejecuta sobre un hardware para ofrecer una serie se servicios. En la asignatura de Sistemas Operativos se ve un sistema operativo en todas sus partes y se profundiza en el núcleo del sistema, poniendo especial atención en el multiprocesamiento, concurrencia y también en los mecanismos de comunicación entre procesos y exclusión mutua. El objetivo de la asignatura de Sistemas Operativos Avanzados será profundizar en los dos subtemas fundamentales del sistema operativo como son el sistema de ficheros y el sistema de administración de memoria. ";
+    createSubject("SOA", "Semestral (2ndo sem.)", 3, 4, [-1, -1, 6, -1, 5], "ALFREDO RUEDA UNSAIN", descripcion);
+
+    descripcion = "No hay descripción disponible de la asignatura";
+    createSubject("METODOLOGIA1", "Semestral (1er sem.)", 3, 4, [5, -1, 5, -1, -1], "MARC CAMPMANY LLORENS", descripcion);
+
+    descripcion = "La asignatura forma al alumno en las tecnologías WAN que permiten la interconexión de redes a nivel global, las redes troncales y las redes de acceso, así como en el diseño de redes globales dentro de entornos totalmente heterogéneos con aplicación de tecnologías de calidad de servicios (QoS) que permiten la integración de todo tipo de servicios.";
+    createSubject("INTERCONE", "Semestral (1er sem.)", 3, 4, [-1, 5, -1, -1, 6], "JAUME ABELLA", descripcion);
+
+    descripcion = "En la asignatura de Administración de Sistemas Operativos se dan los conocimientos básicos necesarios para administrar cualquier sistema servidor, tanto en lo referido al sistema operativo como a los servicios ofrecidos, profundizando especialmente en la administración de sistemas con sistemas operativos de la familia UNIX.";
+    createSubject("ASO", "Semestral (1er sem.)", 3, 6, [7, -1, 7, -1, 7], "ALFREDO RUEDA UNSAIN", descripcion);
+
+    descripcion = "La asignatura introduce al alumno en la manera actual de desarrollar aplicaciones web de cualquier magnitud. El alumno aprenderá cuál es el entorno de desarrollo actual para este tipo de aplicaciones y los pondrá en práctica cada día. Se analizarán también las tendencias tecnológicas del momento en este sector, con la finalidad de irlas incorporando en el currículum del alumno. ";
+    createSubject("WEB2", "Semestral (2ndo sem.)", 3, 5, [-1, -1, -1, 7, 7], "JAUME CAPDEVILA", descripcion);
+
+    descripcion = "La asignatura da una visión de los elementos de entrada / salida del computador más suscebtibles de ser manipulados por un programador. Para ello, en el primer tema se introducen los conceptos genéricos y se estudian las técnicas de sincronismo y de gestión de las transferencias de datos y en los siguientes se desarrollan las técnicas de acceso y control a los periféricos en base a la metodología de programación cooperativa propia de la Salle.";
+    createSubject("PERIFERICOS", "Semestral (2ndo sem.)", 3, 4, [8, 8, -1, -1, -1], "JOSEP MARIA RIO DOVAL", descripcion);
+
+    descripcion = "Al acabar el curso el alumno: -	Conoce los fundamentos básicos por la definición formal de lenguajes de programación. - Usa correctamente las técnicas para la implementación de lenguajes de programación. -	Conoce los diferentes paradigmas de programación. -	Tiene la capacidad suficiente para escoger el lenguaje de programación más adecuado por la resolución de un problema.";
+    createDoubleHourSubject("COMPILADORES", "Semestral (2ndo sem.)", 3, 6, 5, [6, 7], "EDUARD FERNANDEZ ALONSO", descripcion);
+
+    descripcion = "Primera visión empresarial para lograr los conocimientos básicos de la organización de empresa. Se imparten conceptos de Estrategia, Modelo de Negocio, Habilidades Directivas y Marketing.";
+    createDoubleHourSubject("OM", "Semestral (2ndo sem.)", 3, 3, 1, [5, 6], "SÒNIA LUENGO ALVAREZ", descripcion);
+
+    descripcion = "El objetivo de la asignatura es que el alumno adquiera los fundamentos teóricos y las habilidades prácticas para ser capaces de desarrollar un sistema basado en el conocimiento. Al finalizar la asignatura el alumno deberá ser capaz de recopilar y representar el conocimiento de un problema, así como desarrollar o adaptar motores existentes para razonar sobre el problema y resolverlos. Todo esto se aborda con el soporte de metodologías de ingeniería del software, así como el uso de implementaciones basadas en los motores de inferencias más extendidas.";
+    createDoubleHourSubject("SBC", "Semestral (2NDO sem.)", 3, 4, 4, [5, 6], "ELISABET GOLOBARDES RIBÉ :D", descripcion);
+
+
+
 
     //ASIGNATURAS DE 4O
-    createSubject("METODOLOGIA2", "Semestral (1er sem.)", 4, 4, [6, -1, -1, -1, 5]);
-    createSubject("ARQ.DISTRIBUIDA", "Semestral (1er sem.)", 4, 4, [5, -1, -1, 5, -1]);
-    createSubject("SEG.TIC", "Semestral (2ndo sem.)", 4, 4, [5, 5, -1, -1, 5]);
-    createSubject("ENTREPENEURSHIP", "Semestral (2ndo sem.)", 4, 3, [-1, -1, -1, 5, -1]);
-    createDoubleHourSubject("IOS", "Semestral (1er sem.)", 4, 4, 2, [5, 6]);
-    createDoubleHourSubject("PM", "Semestral (1er sem.)", 4, 3, 3, [5, 6]);
-    createDoubleHourSubject("ARQUITECTURA", "Semestral (1er sem.)", 4, 5, 5, [6, 7]);
-    createDoubleHourSubject("MINERIA", "Semestral (1er sem.)", 4, 5, 4, [6, 7]);
-    createDoubleHourSubject("TEND.TECNOLOGICAS", "Semestral (2ndo sem.)", 4, 4, 4, [6, 7]);
+    descripcion = "La asignatura estudia la problemática del desarrollo de sistemas informáticos complejos y plantea la necesidad de acotar el desarrollo de dichos sistemas desde una perspectiva basada en la ingeniería. Se estudian técnicas de especificación de sistemas software (ERS) a nivel de análisis y de diseño. Se aplican técnicas para la construcción de aplicaciones tanto en entornos convencionales (estructurados) como en entornos orientados a objetos. ";
+    createSubject("METODOLOGIA2", "Semestral (1er sem.)", 4, 4, [6, -1, -1, -1, 5], "MARC CAMPMANY LLORENS", descripcion);
+
+    descripcion = "Esta asignatura se mueve en sintonía con el mercado de componentes y los entornos e desarrollo de aplicaciones sobre plataformas distribuidas. El objetivo principal es introducir al alumno en el paradigma de diseño, gestión y desarrollo de aplicaciones distribuidas y en los conceptos relacionados con el mercado de componentes, siempre manteniendo el punto de actualidad necesario.";
+    createSubject("ARQ.DISTRIBUIDA", "Semestral (1er sem.)", 4, 4, [5, -1, -1, 5, -1], "JOAN NAVARRO MARTÍN", descripcion);
+
+    descripcion = "Esta asignatura forma al alumno en el mundo de la Seguridad en las TIC a través del `Hacking Ético´. Es una asignatura puramente práctica que es desarrolla en los Laboratorios de Telemática.";
+    createSubject("SEG.TIC", "Semestral (2ndo sem.)", 4, 4, [5, 5, -1, -1, 5], "JAUME ABELLA FUENTES", descripcion);
+
+    descripcion = "Esta guía está diseñada para los estudiantes del curso de Emprendimiento e Innovación que no pueden asistir debido al trabajo u otros compromisos. Si bien se entiende que los estudiantes no asistirán a las clases regulares, están obligados a preparar las mismas tareas que los demás estudiantes en el curso con ciertas excepciones, los detalles se proporcionan a continuación. Además, mientras que las sesiones de clases especiales no están dispuestos debido a la dificultad de coordinar diferentes horarios, los estudiantes pueden hacer los arreglos para las reuniones cara a cara con el profesor hasta dos veces al mes para discutir el curso. El contenido del curso se publico en estudy, incluyendo el calendario, las tareas y las notas del Profesor.";
+    createSubject("ENTREPENEURSHIP", "Semestral (2ndo sem.)", 4, 3, [-1, -1, -1, 5, -1], "PAUL FOX", descripcion);
+
+    descripcion = "No hay descripción disponible de la asignatura";
+    createDoubleHourSubject("IOS", "Semestral (1er sem.)", 4, 4, 2, [5, 6], "LUÍS MIGUEL MONTERO FARRERO", descripcion);
+
+    descripcion = "La asignatura de Project Management da una visión práctica de la profesión de Project Manager, mostrando los conceptos, las herramientas y técnicas básicas para la planificación y seguimiento de proyectos, así como las habilidades y competencias requeridas para dicha profesión. Al final del curso, los estudiantes deben ser capaces de crear un Project Charter, una WBS, un Schedule, un Presupuesto y tener nociones de los Planes de Riesgo, Comunicación, Calidad y conocer el Seguimiento y el Cierre de un proyecto.";
+    createDoubleHourSubject("PM", "Semestral (1er sem.)", 4, 3, 3, [5, 6], "SÒNIA LUENGO ALVAREZ", descripcion);
+
+    descripcion = "La asignatura es una descripción de las técnicas relacionadas con la arquitectura de computadores. Des de un procesador básico, se introducen todas las técnicas que mejoran el rendimiento hasta llegar a un procesador actual.";
+    createDoubleHourSubject("ARQUITECTURA", "Semestral (1er sem.)", 4, 5, 5, [6, 7], "ENRIQUE GIBERT CODINA", descripcion);
+
+    descripcion = "La asignatura realiza una introducción a la minería de datos. La minería de datos es la disciplina que estudia la extracción de información útil de bases de datos. Hoy en día, las técnicas de minería de datos se usan en muchas aplicaciones diversas, tales como la predicción de fraude en transacciones de tarjetas de crédito, la segmentación de clientes para estudios de marketing o el diagnóstico médico. En este sentido, la minería de datos abarca un campo multi-disciplinar y de gran interés práctico.";
+    createDoubleHourSubject("MINERIA", "Semestral (1er sem.)", 4, 5, 4, [6, 7], "LLUÍS FORMIGA FANALS", descripcion);
+
+    descripcion = "Esta asignatura pretende mostrar métodos y tecnologías avanzadas en el mundo de la multimedia. Su enfoque es claramente divulgativo. Se pretende que los alumnos reciban una visión general de las líneas de investigación más importantes en el ámbito de las tecnologías multimedia en la actualidad.";
+    createDoubleHourSubject("TEND.TECNOLOGICAS", "Semestral (2ndo sem.)", 4, 4, 4, [6, 7], "DAVID MIRALLES ESTEBAN", descripcion);
   }
 
-  void createDoubleHourSubject(String nombre, String duracion, int curso, int creditos, int dia_semana, List<int> list){
+  void createDoubleHourSubject(String nombre, String duracion, int curso, int creditos, int dia_semana, List<int> list, String profesor, String descripcion){
     String name = nombre;
     Map<String, Object> map = new Map();
     map[ConstValues.SEMESTRE] = duracion; // Tipus d'assignatura
     map[ConstValues.CURS] = curso; // Curs
     map[ConstValues.CREDITOS] = creditos; // Num de credits
+    map[ConstValues.PROFESOR] = profesor;
+    map[ConstValues.DESCRIPCION] = descripcion;
+
 
     Map<String, List<int>> horario = new Map<String, List<int>>(); // horario
     if(dia_semana == 1){
@@ -175,12 +259,14 @@ class HomePage extends StatelessWidget{
     HomePage.dataBase[name] = subject;
   }
 
-  void createSubject(String nombre, String duracion, int curso, int creditos, List<int> list) {
+  void createSubject(String nombre, String duracion, int curso, int creditos, List<int> list, String profesor, String descripcion) {
     String name = nombre;
     Map<String, Object> map = new Map();
     map[ConstValues.SEMESTRE] = duracion; // Tipus d'assignatura
     map[ConstValues.CURS] = curso; // Curs
     map[ConstValues.CREDITOS] = creditos; // Num de credits
+    map[ConstValues.PROFESOR] = profesor;
+    map[ConstValues.DESCRIPCION] = descripcion;
 
     Map<String, List<int>> horario = new Map<String, List<int>>(); // horario
     if (list[0] == -1){
