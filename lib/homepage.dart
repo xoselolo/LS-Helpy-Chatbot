@@ -767,6 +767,12 @@ class ChatScreenState extends State<ChatScreen> {
                 case ConstValues.HORARIO:
                   muestraHorarioAsignatura(assignatura);
                   break;
+                case ConstValues.PROFESOR:
+                  muestraProfesorAsignatura(assignatura);
+                  break;
+                case ConstValues.DESCRIPCION:
+                  muestraDescripcionAsignatura(assignatura);
+                  break;
               }
 
               print("Resposta del bot: " + botMessage);
@@ -843,6 +849,17 @@ class ChatScreenState extends State<ChatScreen> {
         + horarioTotal);
   }
 
+  void muestraProfesorAsignatura(String assignatura) {
+    String profesor = HomePage.dataBase[assignatura].data[ConstValues.PROFESOR];
+    sendMessage("El profesor de la asignatura de " + assignatura + " es: " + profesor);
+  }
+
+  void muestraDescripcionAsignatura(String assignatura) {
+    String descripcion = HomePage.dataBase[assignatura].data[ConstValues.DESCRIPCION];
+    sendMessage("Descripción de la asignatura: " + assignatura + "\n"
+        + descripcion);
+  }
+
   String muestraHorarioDia(String assignatura, Map<String, List<int>> horario, int i) {
     String horarioDia = "";
     List<int> horasDia;
@@ -913,6 +930,7 @@ class ChatScreenState extends State<ChatScreen> {
         break;
     }
   }
+
 }
 
 enum ConfirmAction { CANCELAR, ACEPTAR }
