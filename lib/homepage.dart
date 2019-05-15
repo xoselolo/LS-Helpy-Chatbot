@@ -471,6 +471,13 @@ class ChatScreenState extends State<ChatScreen> {
             String resposta = botMessage.substring(index, botMessage.length);
             sendMessage(resposta);
 
+          }else if (fase == ConstValues.fase5){
+            String message = botMessage.substring(6, botMessage.length);
+            print("FASE5 MESSAGE : " + message);
+            sendMessage(message);
+
+            // Crear pdf y descargarlo -> TODO
+
           }else if (fase == ConstValues.fase4){// --------- FASE 4
 
             /*
@@ -607,138 +614,149 @@ class ChatScreenState extends State<ChatScreen> {
                 //index++;
                 //assignatura = getWord(botMessage, index);
                 assignatura = asignaturas.elementAt(i);
-                Subject subject = HomePage.dataBase[assignatura];
-                Map<String, List<int>> horario = subject.data[ConstValues.HORARIO];
 
-                int numInsercions = 0;
+                if(assignatura != "ANY"){
+                  Subject subject = HomePage.dataBase[assignatura];
+                  Map<String, List<int>> horario = subject.data[ConstValues.HORARIO];
 
-                List<int> horesDia = horario[ConstValues.DAY_L]; // Hores de dilluns
-                int size = 0;
-                if(horesDia != null){
-                  if(horesDia.isNotEmpty){
-                    size = horesDia.length;
-                    for(int i = 0; i < size; i++){
-                      int dia = 0;
-                      int hora = horesDia.elementAt(i);
-                      if(isOcuped(dia, hora)){
-                        Subject previousSubject = HomePage.studentSchedule.dies.elementAt(dia).hores.elementAt(hora);
-                        if(previousSubject.name != subject.name){
-                          bool wants = await studentWantToOverride(previousSubject, subject, this.context, 2, 5);
-                          if(wants){
-                            HomePage.studentSchedule.addSubject(subject, dia, hora);
-                            numInsercions++;
+                  int numInsercions = 0;
+
+                  List<int> horesDia = horario[ConstValues.DAY_L]; // Hores de dilluns
+                  int size = 0;
+                  if(horesDia != null){
+                    if(horesDia.isNotEmpty){
+                      size = horesDia.length;
+                      for(int i = 0; i < size; i++){
+                        int dia = 0;
+                        int hora = horesDia.elementAt(i);
+                        if(isOcuped(dia, hora)){
+                          Subject previousSubject = HomePage.studentSchedule.dies.elementAt(dia).hores.elementAt(hora);
+                          if(previousSubject.name != subject.name){
+                            bool wants = await studentWantToOverride(previousSubject, subject, this.context, 2, 5);
+                            if(wants){
+                              HomePage.studentSchedule.addSubject(subject, dia, hora);
+                              numInsercions++;
+                            }
                           }
+                        }else{
+                          HomePage.studentSchedule.addSubject(subject, dia, hora);
+                          numInsercions++;
                         }
-                      }else{
-                        HomePage.studentSchedule.addSubject(subject, dia, hora);
-                        numInsercions++;
                       }
                     }
                   }
-                }
 
-                horesDia = horario[ConstValues.DAY_M]; // Hores de dimarts
-                if(horesDia != null){
-                  if(horesDia.isNotEmpty){
-                    size = horesDia.length;
-                    for(int i = 0; i < size; i++){
-                      int dia = 1;
-                      int hora = horesDia.elementAt(i);
-                      if(isOcuped(dia, hora)){
-                        Subject previousSubject = HomePage.studentSchedule.dies.elementAt(dia).hores.elementAt(hora);
-                        if(previousSubject.name != subject.name){
-                          bool wants = await studentWantToOverride(previousSubject, subject, this.context, 2, 5);
-                          if(wants){
-                            HomePage.studentSchedule.addSubject(subject, dia, hora);
-                            numInsercions++;
+                  horesDia = horario[ConstValues.DAY_M]; // Hores de dimarts
+                  if(horesDia != null){
+                    if(horesDia.isNotEmpty){
+                      size = horesDia.length;
+                      for(int i = 0; i < size; i++){
+                        int dia = 1;
+                        int hora = horesDia.elementAt(i);
+                        if(isOcuped(dia, hora)){
+                          Subject previousSubject = HomePage.studentSchedule.dies.elementAt(dia).hores.elementAt(hora);
+                          if(previousSubject.name != subject.name){
+                            bool wants = await studentWantToOverride(previousSubject, subject, this.context, 2, 5);
+                            if(wants){
+                              HomePage.studentSchedule.addSubject(subject, dia, hora);
+                              numInsercions++;
+                            }
                           }
+                        }else{
+                          HomePage.studentSchedule.addSubject(subject, dia, hora);
+                          numInsercions++;
                         }
-                      }else{
-                        HomePage.studentSchedule.addSubject(subject, dia, hora);
-                        numInsercions++;
                       }
                     }
                   }
-                }
 
-                horesDia = horario[ConstValues.DAY_X]; // Hores de dimecres
-                if(horesDia != null){
-                  if(horesDia.isNotEmpty){
-                    size = horesDia.length;
-                    for(int i = 0; i < size; i++){
-                      int dia = 2;
-                      int hora = horesDia.elementAt(i);
-                      if(isOcuped(dia, hora)){
-                        Subject previousSubject = HomePage.studentSchedule.dies.elementAt(dia).hores.elementAt(hora);
-                        if(previousSubject.name != subject.name){
-                          bool wants = await studentWantToOverride(previousSubject, subject, this.context, 2, 5);
-                          if(wants){
-                            HomePage.studentSchedule.addSubject(subject, dia, hora);
-                            numInsercions++;
+                  horesDia = horario[ConstValues.DAY_X]; // Hores de dimecres
+                  if(horesDia != null){
+                    if(horesDia.isNotEmpty){
+                      size = horesDia.length;
+                      for(int i = 0; i < size; i++){
+                        int dia = 2;
+                        int hora = horesDia.elementAt(i);
+                        if(isOcuped(dia, hora)){
+                          Subject previousSubject = HomePage.studentSchedule.dies.elementAt(dia).hores.elementAt(hora);
+                          if(previousSubject.name != subject.name){
+                            bool wants = await studentWantToOverride(previousSubject, subject, this.context, 2, 5);
+                            if(wants){
+                              HomePage.studentSchedule.addSubject(subject, dia, hora);
+                              numInsercions++;
+                            }
                           }
+                        }else{
+                          HomePage.studentSchedule.addSubject(subject, dia, hora);
+                          numInsercions++;
                         }
-                      }else{
-                        HomePage.studentSchedule.addSubject(subject, dia, hora);
-                        numInsercions++;
                       }
                     }
                   }
-                }
 
-                horesDia = horario[ConstValues.DAY_J]; // Hores de dijous
-                if(horesDia != null){
-                  if(horesDia.isNotEmpty){
-                    size = horesDia.length;
-                    for(int i = 0; i < size; i++){
-                      int dia = 3;
-                      int hora = horesDia.elementAt(i);
-                      if(isOcuped(dia, hora)){
-                        Subject previousSubject = HomePage.studentSchedule.dies.elementAt(dia).hores.elementAt(hora);
-                        if(previousSubject.name != subject.name){
-                          bool wants = await studentWantToOverride(previousSubject, subject, this.context, 2, 5);
-                          if(wants){
-                            HomePage.studentSchedule.addSubject(subject, dia, hora);
-                            numInsercions++;
+                  horesDia = horario[ConstValues.DAY_J]; // Hores de dijous
+                  if(horesDia != null){
+                    if(horesDia.isNotEmpty){
+                      size = horesDia.length;
+                      for(int i = 0; i < size; i++){
+                        int dia = 3;
+                        int hora = horesDia.elementAt(i);
+                        if(isOcuped(dia, hora)){
+                          Subject previousSubject = HomePage.studentSchedule.dies.elementAt(dia).hores.elementAt(hora);
+                          if(previousSubject.name != subject.name){
+                            bool wants = await studentWantToOverride(previousSubject, subject, this.context, 2, 5);
+                            if(wants){
+                              HomePage.studentSchedule.addSubject(subject, dia, hora);
+                              numInsercions++;
+                            }
                           }
+                        }else{
+                          HomePage.studentSchedule.addSubject(subject, dia, hora);
+                          numInsercions++;
                         }
-                      }else{
-                        HomePage.studentSchedule.addSubject(subject, dia, hora);
-                        numInsercions++;
                       }
                     }
                   }
-                }
 
-                horesDia = horario[ConstValues.DAY_V]; // Hores de divendres
-                if(horesDia != null){
-                  if(horesDia.isNotEmpty){
-                    size = horesDia.length;
-                    for(int i = 0; i < size; i++){
-                      int dia = 4;
-                      int hora = horesDia.elementAt(i);
-                      if(isOcuped(dia, hora)){
-                        Subject previousSubject = HomePage.studentSchedule.dies.elementAt(dia).hores.elementAt(hora);
-                        if(previousSubject.name != subject.name){
-                          bool wants = await studentWantToOverride(previousSubject, subject, this.context, 2, 5);
-                          if(wants){
-                            HomePage.studentSchedule.addSubject(subject, dia, hora);
-                            numInsercions++;
+                  horesDia = horario[ConstValues.DAY_V]; // Hores de divendres
+                  if(horesDia != null){
+                    if(horesDia.isNotEmpty){
+                      size = horesDia.length;
+                      for(int i = 0; i < size; i++){
+                        int dia = 4;
+                        int hora = horesDia.elementAt(i);
+                        if(isOcuped(dia, hora)){
+                          Subject previousSubject = HomePage.studentSchedule.dies.elementAt(dia).hores.elementAt(hora);
+                          if(previousSubject.name != subject.name){
+                            bool wants = await studentWantToOverride(previousSubject, subject, this.context, 2, 5);
+                            if(wants){
+                              HomePage.studentSchedule.addSubject(subject, dia, hora);
+                              numInsercions++;
+                            }
                           }
+                        }else{
+                          HomePage.studentSchedule.addSubject(subject, dia, hora);
+                          numInsercions++;
                         }
-                      }else{
-                        HomePage.studentSchedule.addSubject(subject, dia, hora);
-                        numInsercions++;
                       }
                     }
                   }
-                }
-                if(numInsercions > 0){
-                  // Asignatura añadida al horario
-                  sendMessage(subject.name + " añadida al horario!");
+                  if(numInsercions > 0){
+                    // Asignatura añadida al horario
+                    sendMessage(subject.name + " añadida al horario!");
+                  }else{
+                    // No se ha añadido ni una vez
+                    sendMessage(subject.name + " no ha estado añadida al horario");
+                  }
                 }else{
-                  // No se ha añadido ni una vez
-                  sendMessage(subject.name + " no ha estado añadida al horario");
+                  print("Es un empollón");
+                  AIResponse response = await HomePage.dialogflow.detectIntent("fase4 AKUNAMATATA");
+                  String empollon = response.getMessage();
+
+                  sendMessage(empollon);
+                  break;
                 }
+
                 i++;
               }
 
@@ -809,13 +827,33 @@ class ChatScreenState extends State<ChatScreen> {
 
   }
 
-  void mostrarMensajeQueMas() {
-    String whatMoreMessage = "Qué más deseas hacer?\n"
+  Future mostrarMensajeQueMas() async {
+
+    String whatMore = "";
+    // more 1
+    AIResponse response = await HomePage.dialogflow.detectIntent("fase4 more1");
+    whatMore = response.getMessage();
+    // more 2
+    response = await HomePage.dialogflow.detectIntent("fase4 more2");
+    whatMore = whatMore + "\n"  + response.getMessage();
+    // more 3
+    response = await HomePage.dialogflow.detectIntent("fase4 more3");
+    whatMore = whatMore + "\n"  + response.getMessage();
+    // more 4
+    response = await HomePage.dialogflow.detectIntent("fase4 more4");
+    whatMore = whatMore + "\n"  + response.getMessage();
+    // more 5
+    response = await HomePage.dialogflow.detectIntent("fase4 more5");
+    whatMore = whatMore + "\n"  + response.getMessage();
+
+    sendMessage(whatMore);
+
+    /*String whatMoreMessage = "Qué más deseas hacer?\n"
         "Puedes pedirme cosas como información respecto alguna asignatura (créditos, temporalidad...), "
         "añadir más asignaturas\n"
         "Si quieres puedo mostrarte el horario construido hasta el momento...\n"
         "También puedes terminar la conversación y te daré tu horario.";
-    sendMessage(whatMoreMessage);
+    sendMessage(whatMoreMessage);*/
   }
 
   void muestraTemporalidadAsignatura(String assignatura) {

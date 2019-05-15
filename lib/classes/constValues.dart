@@ -7,6 +7,7 @@ class ConstValues{
   static const String fase2 = "fase2";
   static const String fase3 = "fase3";
   static const String fase4 = "fase4";
+  static const String fase5 = "fase5";
 
   // Mensaje no entendido
   static const String notUnderstand1 = "Ups, no he entendido a que te refieres.";
