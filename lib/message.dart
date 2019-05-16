@@ -36,13 +36,14 @@ class Message extends StatelessWidget {
         subtitle: Text(text, textAlign: TextAlign.end,),
       );
     }
+
   }
 
   static Widget buildSchedule(WeekSchedule studentSchedule){
     List<Container> subjects = new List<Container>();
-    for(int i = 0; i < 5; i++){
-      for(int j = 0; j < DaySchedule.MAX_HORES; j++){
-        if(studentSchedule.dies[i].isFree(j)){
+    for(int i = 0; i < DaySchedule.MAX_HORES; i++){
+      for(int j = 0; j < 5; j++){
+        if(studentSchedule.dies[j].isFree(i)){
           // Creem el text buit
           subjects.add(new Container(
               color: Colors.grey,
@@ -51,7 +52,7 @@ class Message extends StatelessWidget {
         }else{
           subjects.add(new Container(
               color: Colors.teal[200],
-              child: new Text(studentSchedule.dies[i].elementAt(j).name),
+              child: new Text(studentSchedule.dies[j].elementAt(i).name),
           ));
         }
       }
@@ -60,13 +61,15 @@ class Message extends StatelessWidget {
     return ListTile(
       trailing: CircleAvatar(child: new Icon(Icons.face)),
       title: Text(_chatbot_name, textAlign: TextAlign.end,),
-      subtitle: GridView.count(
+      subtitle: new Container(
+        child: GridView.count(
           crossAxisCount: 5,
           children: List<Widget>.generate(DaySchedule.MAX_HORES * 5, (index){
-              return new GridTile(
-                  child: subjects[index]
-              );
+            return new GridTile(
+                child: subjects[index]
+            );
           }),
+        ),
       ),
     );
   }

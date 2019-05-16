@@ -29,8 +29,8 @@ class ConstValues{
 
   // Fase 4
   //    Acciones a hacer
-      static const String ADDPENDENT = "ADD+";
       static const String ADDONE = "ADD1";
+      static const String REMOVE = "REMV";
       static const String INFORMATION = "INFO";
       static const String SHOW = "SHOW"; // mostrar horario construido
       static const String END = "ENDD"; // Maybe DOWNLOAD too
