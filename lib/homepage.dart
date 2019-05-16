@@ -567,6 +567,7 @@ class ChatScreenState extends State<ChatScreen> {
             // PAS 1
             if(botMessage.contains("ERRR")){
               sendMessage(botMessage.substring(11, botMessage.length));
+              mostrarMensajeQueMas();
             }else{
               String action = getWord(botMessage, 6);
               print("ACTION: " + action);
@@ -782,7 +783,7 @@ class ChatScreenState extends State<ChatScreen> {
                   }else{
                     print("Es un empollón");
                     AIResponse response = await HomePage.dialogflow.detectIntent("fase4 AKUNAMATATA");
-                    String empollon = response.getMessage();
+                    String empollon = response.getMessage().substring(6, response.getMessage().length);
 
                     sendMessage(empollon);
                     break;
@@ -830,7 +831,7 @@ class ChatScreenState extends State<ChatScreen> {
                 mostrarMensajeQueMas();
 
               }else{
-                sendMessage("No entendí ni wueva");
+                sendMessage("¿Podrías ser más claro?");
               }
             }
 
